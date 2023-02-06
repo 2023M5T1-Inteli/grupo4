@@ -60,7 +60,7 @@ Planejador de trajetórias para voos em baixa altitude
 
 * Aluno 1
 * Aluno 2
-* Aluno 3
+* Mateus Rafael Miranda da Silva
 * Aluno 4
 * Aluno 5
 * Aluno 6
