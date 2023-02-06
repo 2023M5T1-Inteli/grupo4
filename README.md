@@ -27,13 +27,13 @@ A seguir estão os passos sugeridos para a preparação do seu grupo no início 
 # Grupo: Stall
 
 **Integrantes:**
-* [Gabriel Caetano Nhoncanse](https://www.linkedin.com/in/gabrielcaetanonhoncanse/).
-* [Jonas Viana Sales](https://www.linkedin.com/in/jonas-viana-sales/).
-* [Mateus Rafael Miranda da Silva](https://www.linkedin.com/in/mateus-rmiranda/).
-* [Raphael Lisboa Antunes](https://www.linkedin.com/in/raphael-lisboa/).
-* [Sarah de Miranda Ribeiro](https://www.linkedin.com/in/sarah-ribeiro-361130195/).
+* [Aluno 01](https://www.linkedin.com/in/gabrielcaetanonhoncanse/).
+* [Aluno 02](https://www.linkedin.com/in/jonas-viana-sales/).
+* [Aluno 03](https://www.linkedin.com/in/mateus-rmiranda/).
+* [Aluno 04](https://www.linkedin.com/in/raphael-lisboa/).
+* [Aluno 05](https://www.linkedin.com/in/sarah-ribeiro-361130195/).
 * [Sergio Brito Amorim Lucas](https://www.linkedin.com/in/sergiobalucas/).
-* [Thomas Frajhof Brand](https://www.linkedin.com/in/thomas-frajhof-brand/).
+* [Aluno 07](https://www.linkedin.com/in/thomas-frajhof-brand/).
 
 # Descrição
 
