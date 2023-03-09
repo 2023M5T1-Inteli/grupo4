@@ -6,20 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./script/script.js"></script>
+    <script src="./script/app.js"></script>
+    <script src="./script/server.js"></script>
 
-    <!-- Direct reference -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Referência direta ao neo4j driver -->
     <script src="lib/browser/neo4j-web.min.js"></script>
-
-    <!-- unpkg CDN non-minified -->
-    <script src="https://unpkg.com/neo4j-driver"></script>
-    <!-- unpkg CDN minified for production use, version X.Y.Z -->
-    <script src="https://unpkg.com/neo4j-driver@X.Y.Z/lib/browser/neo4j-web.min.js"></script>
-
-    <!-- jsDelivr CDN non-minified -->
-    <script src="https://cdn.jsdelivr.net/npm/neo4j-driver"></script>
-    <!-- jsDelivr CDN minified for production use, version X.Y.Z -->
-    <script src="https://cdn.jsdelivr.net/npm/neo4j-driver@X.Y.Z/lib/browser/neo4j-web.min.js"></script>
 
     <title>Stall</title>
 </head>
@@ -29,10 +22,10 @@
         <div class="extended_input" id="ext_in">
             <div> <!--ponto inicial-->
                 <p>Ponto inicial</p>
-                <p> Latitude
+                <p> Latitude:
                     <input placeholder="XXºXX'" id="lat_str">
                 </p>
-                <p> Longitude
+                <p> Longitude:
                     <input placeholder="XXºXX'" id="lon_str">
                 </p>
             </div>
@@ -40,20 +33,21 @@
             <div> <!--ponto final-->
                 <div> <!--ponto inicial-->
                     <p>Ponto final</p>
-                    <p> Latitude
+                    <p> Latitude:
                         <input placeholder="XXºXX'" id="lat_end">
                     </p>
-                    <p> Longitude
+                    <p> Longitude:
                         <input placeholder="XXºXX'" id="lon_end">
                     </p>
                 </div>
             </div>
+            <button class="btn" id="bot-calc" onclick="calcular()">Calcular</button>
         </div>
         <div class="short_input" id="sht_in">
-            <a>Ponto inicial:</a>
+            <a>Ponto inicial - </a>
             <a id="lat_1"></a>
             <a id="lon_1"></a>
-            <a style="padding-left: 30px;">Ponto final:</a>
+            <a style="padding-left: 30px;">Ponto final - </a>
             <a id="lat_2"></a>
             <a id="lon_2"></a>
         </div>

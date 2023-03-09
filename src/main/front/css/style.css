@@ -35,10 +35,28 @@ body {
 
 .extended_input {
     display: block;
+    margin-left: 13px;
 }
 
 .short_input {
     display: none;
-    height: 1000px;
     /* background-color: aqua;*/
+}
+
+#bot-calc {
+    border-radius: 10px;
+    border: 1px;
+    background-color: #D4D9DE;
+    height: 40px;
+    width: 80px;
+}
+
+.btn:active {
+    background-color: #333;
+    color: #474343;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+#graph {
+    height: 280px;
 }
