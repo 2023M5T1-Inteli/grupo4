@@ -60,3 +60,8 @@ body {
 #graph {
     height: 280px;
 }
+
+svg {
+    height: 750px;
+    width: 100%;
+}

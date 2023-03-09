@@ -51,7 +51,7 @@ function hide_show() {
 var nodes;
 var links;
 
-fetch('http://localhost:3000/data', {
+fetch('http://localhost:3003/data', {
     method: 'GET'
 })
     .then(response => response.json())
@@ -60,27 +60,27 @@ fetch('http://localhost:3000/data', {
         nodes = data.nodes;
         links = data.links;
         // cria o grafo com a biblioteca d3
-        const svg = d3.select('#graph')
+        var svg = d3.select('#graph')
             .append('svg')
-            .attr('width', '100%')
-            .attr('height', '100%');
+        width = +svg.attr("width"),
+            height = +svg.attr("height");
 
 
         const simulation = d3.forceSimulation(nodes)
-            .force('link', d3.forceLink(links).id(d => d.id))
-            .force('charge', d3.forceManyBody().strength(-400))
-            .force('center', d3.forceCenter(svg.attr('width') / 2, svg.attr('height') / 2))
-            .forceCenter(svg.attr('width') / 2, svg.attr('height') / 2);
+            .force("link", d3.forceLink(links).id(function (d) { return d.id; }).distance(80))
+            .force('charge', d3.forceManyBody().strength(-200))
+            .force("center", d3.forceCenter(width / 2, height / 2));
 
         const link = svg.append('g')
             .attr('stroke', '#999')
-            .attr('stroke-opacity', 0.6)
+            .attr('stroke-opacity', 7)
             .selectAll('line')
             .data(links)
             .join('line')
-            .attr('stroke-width', d => Math.sqrt(d.value));
+            .attr('stroke-width', 7);
 
         const node = svg.append('g')
+            .attr("class", "nodes")
             .attr('stroke', '#fff')
             .attr('stroke-width', 1.5)
             .selectAll('circle')
@@ -89,6 +89,8 @@ fetch('http://localhost:3000/data', {
             .attr('r', 20)
             .attr('fill', '#555')
             .call(drag(simulation));
+
+            
 
         node.append('title')
             .text(d => d.label);
