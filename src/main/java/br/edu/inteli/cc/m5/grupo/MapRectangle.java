@@ -3,11 +3,7 @@ package br.edu.inteli.cc.m5.grupo;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class MapRectangle {
-
 
     public static void main(String[] args) {
 
@@ -45,33 +41,58 @@ public class MapRectangle {
             }
         }
 
-        // Connect the vertices by adding edges between adjacent vertices
-        for (int i = 0; i < numVerticesWidth; i++) {
-            for (int j = 0; j < numVerticesHeight; j++) {
-                Vertex v1 = vertices[i][j];
-                Vertex v2 = vertices[i+1][j];
-                Vertex v3 = vertices[i][j+1];
-                Vertex v4 = vertices[i+1][j+1];
-
-                // Add edges between adjacent vertices
-                v1.addEdge(v2, (v1.getWeight() + v2.getWeight()) / 2);
-                v1.addEdge(v3, (v1.getWeight() + v3.getWeight()) / 2);
-                v1.addEdge(v4, (v1.getWeight() + v4.getWeight()) / 2);
-                v2.addEdge(v3, (v2.getWeight() + v3.getWeight()) / 2);
-                v2.addEdge(v4, (v2.getWeight() + v4.getWeight()) / 2);
-                v3.addEdge(v4, (v3.getWeight() + v4.getWeight()) / 2);
-            }
+        // Connect the vertices by adding edges between adjacent vertices based on distance
+// Iterate through all vertices and add edges to adjacent vertices
+for (int i = 0; i < numVerticesWidth; i++) {
+    for (int j = 0; j < numVerticesHeight; j++) {
+        Vertex v1 = vertices[i][j];
+        
+        // Check if there are adjacent vertices to the left and above
+        if (i > 0) {
+            Vertex v4 = vertices[i-1][j];
+            double weight = calculateDistance(v1.getLatitude(), v1.getLongitude(), v4.getLatitude(), v4.getLongitude());
+            v1.addEdge(v4, weight);
         }
-
-        for (int i = 0; i <= numVerticesWidth; i++) {
-            for (int j = 0; j <= numVerticesHeight; j++) {
-                Vertex v = vertices[i][j];
-                System.out.println("Vertex at (" + v.getLatitude() + ", " + v.getLongitude() + ")");
-                for (Edge e : v.getEdges()) {
-                    System.out.println("    Edge to (" + e.getTo().getLatitude() + ", " + e.getTo().getLongitude() + ") with weight " + e.getWeight());
-                }
-            }
+        if (j > 0) {
+            Vertex v5 = vertices[i][j-1];
+            double weight = calculateDistance(v1.getLatitude(), v1.getLongitude(), v5.getLatitude(), v5.getLongitude());
+            v1.addEdge(v5, weight);
         }
+        
+        // Check if there are adjacent vertices to the right and below
+        if (i < numVerticesWidth-1) {
+            Vertex v2 = vertices[i+1][j];
+            double weight = calculateDistance(v1.getLatitude(), v1.getLongitude(), v2.getLatitude(), v2.getLongitude());
+            v1.addEdge(v2, weight);
+        }
+        if (j < numVerticesHeight-1) {
+            Vertex v3 = vertices[i][j+1];
+            double weight = calculateDistance(v1.getLatitude(), v1.getLongitude(), v3.getLatitude(), v3.getLongitude());
+            v1.addEdge(v3, weight);
+        }
+    }
+}
+
+// Print all vertices
+for (int i = 0; i <= numVerticesWidth; i++) {
+    for (int j = 0; j <= numVerticesHeight; j++) {
+        Vertex v = vertices[i][j];
+        System.out.println("Vertex " + v.toString());
+    }
+}
+
+// Print all edges
+for (int i = 0; i < numVerticesWidth; i++) {
+    for (int j = 0; j < numVerticesHeight; j++) {
+        Vertex v = vertices[i][j];
+        List<Edge> edges = v.getEdges();
+        for (Edge e : edges) {
+            System.out.println("Edge from " + v.toString() + " to " + e.getDestination().toString() + " with weight " + e.getWeight());
+        }
+    }
+}
+
+
     }
     
     // Method to create a vertex with a latitude, longitude, and weight
@@ -119,45 +140,49 @@ public class MapRectangle {
 }
 
 class Vertex {
+
     private double latitude;
     private double longitude;
     private double weight;
     private List<Edge> edges;
-    
+
     public Vertex(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.edges = new ArrayList<>();
     }
-    
-    public void addEdge(Vertex v2, double d) {
+
+    public void addEdge(Edge e2) {
+    }
+
+    public void addEdge(Vertex to, double weight) {
+        Edge e = new Edge(to, weight);
+        edges.add(e);
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public List<Edge> getEdges() {
+        return edges;
     }
 
     public double getLatitude() {
         return latitude;
     }
-    
+
     public double getLongitude() {
         return longitude;
     }
-    
-    public double getWeight() {
-        return weight;
-    }
-    
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-    
-    public List<Edge> getEdges() {
-        return edges;
-    }
-    
-    public void addEdge(Edge edge) {
-        edges.add(edge);
-    }
-    
+
 }
+
+    
 
 class Edge {
     private Vertex to;
