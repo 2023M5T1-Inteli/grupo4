@@ -75,7 +75,7 @@ public class Intermediary_Points {
 
     // Método main que executa os códigos
     public static void main(String[] args) {
-
+        
         // Exemplo dado algumas coordenadas
         List<LatLon> intermediaryPoints = calculateIntermediaryPoints(-22.5889042043, -43.4855748, -22.359194448201, -42.5794347619519);
 
@@ -90,6 +90,8 @@ class LatLon {
     public double latitude;
     public double longitude;
     public int elevation;
+    //public int id = 0;
+    //public List<LatLon> neighbors;
 
     // Constructor indicando como o objeto vai ser instanciado caso seja dado apenas latitude e longitude
     public LatLon(double latitude, double longitude) {
