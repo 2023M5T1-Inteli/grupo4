@@ -1,11 +1,11 @@
-function calcular() {
+function calcular() { // botão que enviará os inputs do front para o back
     const lat_str = document.querySelector("lat_str");
     const lon_str = document.querySelector("lon_str");
     const lat_end = document.querySelector("lat_end");
     const lon_end = document.querySelector("lon_end");
 }
 
-function hide_show() {
+function hide_show() { // funcionamento do botão do "olho" (ocultar/mostrar)
     var in_box = document.getElementById("input_box");
     var open_eye = document.getElementById("open_eye");
     var closed_eye = document.getElementById("closed_eye");
@@ -14,6 +14,7 @@ function hide_show() {
     var ext_in = document.getElementById("ext_in");
     var sht_in = document.getElementById("sht_in");
     var graph_dim = document.getElementById("graph");
+    var svg = document.getElementById("svg");
 
     var lat_str = document.getElementById("lat_str").value;
     var lon_str = document.getElementById("lon_str").value;
@@ -33,6 +34,7 @@ function hide_show() {
         ext_in.style.display = "block";
         sht_in.style.display = "none";
         graph_dim.style.height = "280px";
+        svg.style.height = "280px";
     }
     else {
         in_box.style.height = "40px"; // diminui o tamanho da caixa de input
@@ -46,12 +48,15 @@ function hide_show() {
         lat_2.innerHTML = "Latitude: " + lat_end + " - ";
         lon_2.innerHTML = "Longitude: " + lon_end;
         graph_dim.style.height = "450px";
+        svg.style.height = "450px";
     }
 }
 var nodes;
 var links;
 
-fetch('http://localhost:3003/data', {
+const padding = 50;
+
+fetch('http://localhost:3003/data', { // acessa a rota get/data criada no back para passar as duas arrays
     method: 'GET'
 })
     .then(response => response.json())
@@ -59,9 +64,12 @@ fetch('http://localhost:3003/data', {
         console.log(data);
         nodes = data.nodes;
         links = data.links;
-        // cria o grafo com a biblioteca d3
+
+        // cria o grafo com a biblioteca d3 através das informações das arrays nodes e links
         var svg = d3.select('#graph')
             .append('svg')
+            .attr('class', 'svg')
+            .attr('id', 'svg')
         width = +svg.attr("width"),
             height = +svg.attr("height");
 
@@ -88,23 +96,25 @@ fetch('http://localhost:3003/data', {
             .join('circle')
             .attr('r', 20)
             .attr('fill', '#555')
+            .attr('cx', d => d.x + padding) // adiciona o padding à coordenada x
+            .attr('cy', d => d.y + padding) // adiciona o padding à coordenada y
             .call(drag(simulation));
 
-            
+
 
         node.append('title')
             .text(d => d.label);
 
         simulation.on('tick', () => {
             link
-                .attr('x1', d => d.source.x)
-                .attr('y1', d => d.source.y)
-                .attr('x2', d => d.target.x)
-                .attr('y2', d => d.target.y);
+                .attr('x1', d => d.source.x + padding)
+                .attr('y1', d => d.source.y + padding)
+                .attr('x2', d => d.target.x + padding)
+                .attr('y2', d => d.target.y + padding);
 
             node
-                .attr('cx', d => d.x)
-                .attr('cy', d => d.y);
+                .attr('cx', d => d.x + padding)
+                .attr('cy', d => d.y + padding);
         });
 
         function drag(simulation) {
