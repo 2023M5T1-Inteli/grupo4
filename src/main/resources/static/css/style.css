@@ -35,41 +35,27 @@ body {
 
 .extended_input {
     display: block;
-    margin-left: 13px;
+    margin-left: 10px;
+    
 }
 
 .short_input {
     display: none;
+    height: 1000px;
     /* background-color: aqua;*/
 }
 
 #bot-calc{
     border-radius: 10px;
     border: 1px;
-    background-color: #D4D9DE;
+    background-color: #d4d9de;
     height: 40px;
     width: 80px;
-}
 
+}
 .btn:active {
-	background-color: #333;
+    background-color: #333;
     color: #474343;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
-}
-
-#graph {
-    position: relative;
-    height: 280px;
-    border: 1px solid #ccc;
-}
-
-/* svg {
-	height: 750px;
-    width: 100%;
-} */
-
-.svg {
-    position: absolute;
-    width: 100%;
-    height: 280px;
-}
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+  }
+  
