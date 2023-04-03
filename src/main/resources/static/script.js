@@ -125,3 +125,37 @@ var map = new mapboxgl.Map({
          }
      });
  });
+
+
+
+ // Função para avançar para a próxima página
+ function proximaPagina() {
+    document.getElementById("paginaAtual").value++;
+    atualizarPagina();
+}
+
+// Função para voltar para a página anterior
+function paginaAnterior() {
+    document.getElementById("paginaAtual").value--;
+    atualizarPagina();
+}
+
+// Função para atualizar a página exibida
+function atualizarPagina() {
+    var paginaAtual = document.getElementById("paginaAtual").value;
+    var paginas = document.getElementsByClassName("page");
+    for (var i = 0; i < paginas.length; i++) {
+        paginas[i].style.display = "none";
+    }
+    paginas[paginaAtual - 1].style.display = "block";
+    if (paginaAtual == 1) {
+        document.getElementById("anterior").disabled = true;
+    } else {
+        document.getElementById("anterior").disabled = false;
+    }
+    if (paginaAtual == paginas.length) {
+        document.getElementById("proximo").disabled = true;
+    } else {
+        document.getElementById("proximo").disabled = false;
+    }
+}

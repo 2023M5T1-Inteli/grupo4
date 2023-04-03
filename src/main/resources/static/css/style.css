@@ -8,36 +8,63 @@ body {
     margin: 0;
 }
 
+.page {
+    display: none;
+    align-items: center;
+}
+
 .input_box {
-    background-color: #D9D9D9;
+    background-color: #ffffff;
     height: 100%;
     width: 30%;
-    overflow-y: scroll;
+
+}
+
+#head{
+    color: #027065;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.4em;
+    margin-left: 2.5vw;
+    margin-right: 2vw;
+    margin-top: 4vw;
+    margin-bottom: 1vw;
+    font-weight:500;
 }
 
 #title {
     color: #027065;
-    font-weight: 800;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    margin-left: 2vw;
-
-
+    font-weight: 450;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    margin-left: 2.5vw;
+    margin-top: 2vw;
 }
 
 #subtitle {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 2vw;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
 
 }
 
 #subtitle2 {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 2vw;
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
+    margin-top: 5vh;
+    font-weight: 450;
+    font-size: 1.5em;
     color: #027065;
 
 }
+
+#subline{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
+    margin-right: 2vw;
+    color: #7e7c7c;
+
+
+}
+
 
 .input {
     border: 0px;
@@ -46,63 +73,76 @@ body {
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     margin-left: 1vw;
+    margin-top: 1vh;
     color: #333;
+    background-color: #f3efef;
 
 }
 
-.eye_icon {
-    position: absolute;
-    top: 278px;
-    right: 16px;
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
     cursor: pointer;
-    border-radius: 100%;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 6px;
+
 }
 
-.eye_button {
-    cursor: pointer;
-    border-radius: 100%;
-    border-width: 1.5px;
+.buttonNext {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 18vw;
+    margin-top: 10vh;
+
 }
 
-#closed_eye {
-    width: 22px;
-    height: 20px;
+.buttonNext:hover {
+    background-color: #027065;
+    color: white;
 }
 
-#open_eye {
-    width: 22px;
-    height: 20px;
+.buttonBack {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 5vw;
+    margin-top: 11vh;
+
+}
+
+.buttonBack:hover {
+    background-color: #e7e7e7;
+    color: black;
 }
 
 
-.short_input {
-    display: none;
+.buttonCalc {
+    margin-top: 11vh;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 4.5vw;
+
 }
 
-#bot-calc {
-    background-color: rgb(2, 112, 101);
-    color: rgb(242, 242, 242);
-    height: 4em;
-    width: 100%;
-    font-weight: 800;
-    margin-top: 2em;
-    text-transform: uppercase;
-    border-style: none;
+.buttonCalc:hover {
+    background-color: #027065;
+    color: white;
 }
 
-#bot-calc:hover {
-    background-color: rgb(242, 242, 242);
-    color: rgb(2, 112, 101);
-    cursor: pointer;
-}
 
-#bot-calc:active {
-    background-color: rgb(242, 242, 242, 0.75);
-}
 
-.btn:active {
-    font-size: 0.75em;
-}
+
+
+
 
 .svg {
     position: absolute;

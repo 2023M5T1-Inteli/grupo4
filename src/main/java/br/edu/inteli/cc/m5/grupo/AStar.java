@@ -151,7 +151,7 @@ public class Neo4JConnector {
         CRUD_Neo4J example = new CRUD_Neo4J();
 
         // Conectando o objeto no localhost do Neo4J
-        example.connect("bolt://localhost:7687", "neo4j-AStar", "12345678");
+        example.connect("bolt://localhost:7687", "neo4j", "12345678");
 
         Scanner scanner = new Scanner(System.in);
     }  
