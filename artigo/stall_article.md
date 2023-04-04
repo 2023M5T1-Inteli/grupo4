@@ -24,14 +24,18 @@ abstract: Como parte das atividades do módulo 5, cada grupo deverá redigir um 
 
 <p> Com base nas informações fornecidas sobre o terreno da área da missão, o algoritmo montará um grafo a partir dos nós e arestas inseridos pelo usuário, atribuindo pesos às arestas com base no cálculo balanceado entre distância e altitude. Uma vez que o grafo é montado, o sistema calcula o peso total das possíveis trajetórias e escolhe a de menor peso, disponibilizando a rota mais eficiente para a equipe. </p>
 
+<p>Os grafos são estruturas matemáticas compostas por vértices e arestas que conectam pares de vértices. Eles são utilizados para representar uma variedade de situações no mundo real, como redes de estradas, sistemas de computadores e relações sociais.De acordo com estudos, a teoria dos grafos analisa as características dessas estruturas, incluindo conectividade, coloração, planaridade e a existência de caminhos e ciclos. A representação visual dos grafos é feita através de diagramas, que mostram os vértices como pontos e as arestas como linhas. A teoria dos grafos é um importante campo de estudo da matemática discreta e possui aplicação em diversas áreas de conhecimento.</p>
+
 <p> Tendo esse contexto em vista, foi desenvolvida uma solução para missões de baixa altitude, permitindo que a melhor rota seja escolhida entre o ponto inicial e final, balanceando a distância, altitude e características específicas da missão, como a aeronave usada, áreas de exclusão (como zonas populadas que são colocadas em risco durante as missões), entre outros fatores. Além disso, altitudes elevadas devem ser evitadas ao máximo, e não excluídas, para manter a segurança do piloto e reduzir a visibilidade da nave para possíveis inimigos. Essa solução proposta por Liu, Wang, Zhou e Yang (2021) utiliza um sistema inteligente de planejamento de missões para drones de baixa altitude, levando em consideração diversos fatores para encontrar a melhor rota.</p>
 
 
 
 # Trabalhos relacionados
 
-Pela natureza do projeto, não foi possível encontrar projetos que se aplicam a situações de missões militares em baixa altitude, no entanto, foi possível encontrar algo similar em um artigo sobre "Uma Abordagem de Risco Mínimo para Planejamento de Trajeto de VANTs (Veiculos Aéreos Não Tripulados)" (DE FILIPPIS; GUGLIERI; QUAGLIOTTI, 2010). 
-Muitos dos conceitos utilizados no artigo são semelhantes aos utilizados no projeto, como a utilização de um grafo para representar o terreno e a utilização de um algoritmo de busca para encontrar a melhor rota, estas semelhanças serão discutidas mais a frente.
+Pela natureza do projeto, não foi possível encontrar projetos que se aplicam a situações de missões militares em baixa altitude, no entanto, foi possível encontrar algo similar em um artigo sobre "Uma Abordagem de Risco Mínimo para Planejamento de Trajeto de VANTs (Veiculos Aéreos Não Tripulados)" (DE FILIPPIS; GUGLIERI; QUAGLIOTTI, 2010) e em um artigo sobre "Utilização do Algoritmo de Dijkstra para Cálculo de Rotas
+no Trabalho Público do Município de Criciúma/SC" (Guizzo, A.L.; Engelmann, C.P.; Zanette, J.G.; Simões, P.W.T.A.; Silva, G. V,
+Scarpato, C. V.; ). 
+Muitos dos conceitos utilizados nos artigos são semelhantes aos utilizados no projeto, como a utilização de um grafo para representar o terreno, a implementação do algoritmo de Djikstra e a utilização de um algoritmo de busca para encontrar a melhor rota, estas semelhanças serão discutidas mais a frente.
 
 # Motivação
 
@@ -275,23 +279,32 @@ Referenciar artigos de grafos e sua eficiência
 
 Adams, C., Kuang, Y. D., & Wang, S. (2018). Routing of low-altitude flights for UAVs based on a 3D spatial analysis. Journal of Intelligent & Robotic Systems, 89(1), 139-155. doi:10.1007/s10846-017-0691-9
 
-Liu, Y., Wang, J., Zhou, Y., & Yang, Y. (2021). An Intelligent Mission Planning System for Low-Altitude Unmanned Aerial Vehicles. Aerospace, 8(7), 196. doi:10.3390/aerospace8070196
-
-DASGUPTA, S.; Papadimitriou, C.; Vazirani, U. **Algoritmos.** Porto Alegre: AMGH, 2011. 1 recurso online. ISBN 9788563308535. Disponível em: https://integrada.minhabiblioteca.com.br/books/9788563308535. Acesso em: 17 jan. 2023.
-
 AGÊNCIA NACIONAL DE AVIAÇÃO CIVIL (ANAC). RASO - Relatório Anual de Segurança Operacional. [S. l.], 7 out. 2022. Disponível em: https://www.gov.br/anac/pt-br/assuntos/seguranca-operacional/informacoes-de-seguranca-operacional/relatorio-anual-de-seguranca-operacional. Acesso em: 5 mar. 2023.
-
-CENTRO DE INVESTIGAÇÃO E PREVENÇÃO DE ACIDENTES AERONÁUTICOS (CENIPA). DADOS ESTATÍSTICOS. [S. l.], 2019. Disponível em: https://www2.fab.mil.br/cenipa/index.php/prevencao/dados-estatisticos. Acesso em: 5 mar. 2023.
-
-OPEN SOURCE GEOSPATIAL FOUNDATION. GDAL Documentation. [S. l.], 2023. Disponível em: https://gdal.org/index.html. Acesso em: 5 mar. 2023.
-
-NEO4J. Neo4j Graph Database. [S. l.], 2023. Disponível em: https://neo4j.com/product/neo4j-graph-database/. Acesso em: 10 mar. 2023.
-
-VMTANZU. Spring. Why Spring?. [S. l.], 2023. Disponível em: https://spring.io/why-spring. Acesso em: 10 mar. 2023.
 
 BOSTOCK, Mike. D3.js - Data-Driven Documents. [S. l.], 2021. Disponível em: https://d3js.org/. Acesso em: 12 mar. 2023.
 
+CENTRO DE INVESTIGAÇÃO E PREVENÇÃO DE ACIDENTES AERONÁUTICOS (CENIPA). DADOS ESTATÍSTICOS. [S. l.], 2019. Disponível em: https://www2.fab.mil.br/cenipa/index.php/prevencao/dados-estatisticos. Acesso em: 5 mar. 2023.
+
+DASGUPTA, S.; Papadimitriou, C.; Vazirani, U. **Algoritmos.** Porto Alegre: AMGH, 2011. 1 recurso online. ISBN 9788563308535. Disponível em: https://integrada.minhabiblioteca.com.br/books/9788563308535. Acesso em: 17 jan. 2023.
+
 DE FILIPPIS, Luca; GUGLIERI, Giorgio; QUAGLIOTTI, Fulvia. A Minimum Risk Approach for Path Planning of UAVs. Journal of Intelligent & Robotic Systems, Holanda, ano 2011, v. 61, n. 1-4, p. 203 - 219, Disponível em: https://doi.org/10.1007/s10846-010-9493-9 Acesso em: 12 mar. 2023.
 
-RUSSEL, S.; NORVIG, P.; Artificial Inteligence: A Modern Approach.
+Instrução: Voar Um Drone Usando Terrain Follow Com Site Scan Flight for ArcGIS. Disponível em: <https://support.esri.com/pt-br/knowledge-base/instruo-voar-um-drone-usando-terrain-follow-com-site-sc-000024335>. Acesso em: 4 abr. 2023.
+
+Melo, G. Introdução à Teoria dos Grafos. https://repositorio.ufpb.br/jspui/bitstream/tede/7549/5/arquivototal.pdf. Acesso em: 31 mar. 2023.
+
+L., A. et al. Utilização do Algoritmo de Dijkstra para Cálculo de Rotas no Trabalho Público do Município de Criciúma/SC. Disponível em: https://periodicos.unesc.net/ojs/index.php/sulcomp/article/download/1815/1717/5477. Acesso em: 04 abr. 2023.
+
+Liu, Y., Wang, J., Zhou, Y., & Yang, Y. (2021). An Intelligent Mission Planning System for Low-Altitude Unmanned Aerial Vehicles. Aerospace, 8(7), 196. doi:10.3390/aerospace8070196
+
+NEO4J. Neo4j Graph Database. [S. l.], 2023. Disponível em: https://neo4j.com/product/neo4j-graph-database/. Acesso em: 10 mar. 2023.
+
+OPEN SOURCE GEOSPATIAL FOUNDATION. GDAL Documentation. [S. l.], 2023. Disponível em: https://gdal.org/index.html. Acesso em: 5 mar. 2023.
+
 Prentice-Hall, Second Edition, 2003. Disponível em: https://integrada.minhabiblioteca.com.br/reader/books/9788595156104/epubcfi/6/28[%3Bvnd.vst.idref%3Dch03.xhtml]!/4/2/2/402/11:219[tic%2Ca.].
+
+RUSSEL, S.; NORVIG, P.; Artificial Inteligence: A Modern Approach. 
+
+Terrain Following | AEL Sistemas. Disponível em: https://www.ael.com.br/terrain-following.html. Acesso em 04 abr. 2023.
+
+VMTANZU. Spring. Why Spring?. [S. l.], 2023. Disponível em: https://spring.io/why-spring. Acesso em: 10 mar. 2023.
