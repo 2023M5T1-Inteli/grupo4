@@ -47,59 +47,6 @@ public class CoordinatesController {
     public List<NodeEntity> listAllCoordinates() {
         return nodeRepository.findAll();
     }
-
-    // public Map<String, Object> listAllNode() {
-
-        // List<Map<String, Object>> results = nodeRepository.findAllProjectedBy();
-        // Map<String, Object> result = new HashMap<>();
-        // for (Map<String, Object> map : results) {
-        //     result.put((String) map.get("lat"), map.get("lon"));
-        // }
-        // return result;
-
-            
-    //         Map<String, Object> response = new HashMap<>();
-    
-    //         Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "12341234"));
-    //         Session session = driver.session();
-    
-    //         String query = "MATCH (n) OPTIONAL MATCH (n)-[r]->() RETURN n.lon, n.lat, r";
-    //         Result result = session.run(query);
-    
-    //         List<Map<String, Object>> nodes = new ArrayList<>();
-    //         List<Map<String, Object>> links = new ArrayList<>();
-    
-    //         while (result.hasNext()) {
-    //             Record record = result.next();
-    
-    //             Node node = record.get("n").asNode();
-    //             Map<String, Object> nodeMap = new HashMap<>();
-    //             nodeMap.put("id", node.id());
-    //             nodeMap.put("label", node.get("name").asString());
-    //             nodes.add(nodeMap);
-    
-    //             Value relationshipValue = record.get("r");
-    //             if (!relationshipValue.isNull()) {
-    //                 Relationship relationship = relationshipValue.asRelationship();
-    //                 Map<String, Object> linkMap = new HashMap<>();
-    //                 linkMap.put("source", relationship.startNodeId());
-    //                 linkMap.put("target", relationship.endNodeId());
-    //                 linkMap.put("type", relationship.type());
-    //                 links.add(linkMap);
-    //             }
-    //         }
-    
-    //         response.put("nodes", nodes);
-    //         response.put("links", links);
-    
-    //         session.close();
-    //         driver.close();
-    
-    //         return response;
-        
-
-    // }
-    
     
 
     /**
@@ -109,10 +56,6 @@ public class CoordinatesController {
      */
      
     @PostMapping("/process")
-
-        // public Coordinates storeCoordinates(@RequestBody Coordinates coordinates) {
-        //     return coordinatesRepository.save(coordinates);
-        // }
 
     public Coordinates enviarDados(@RequestBody Coordinates newCoord) {
 
