@@ -30,7 +30,7 @@ public class AppDted {
             // P0
             // Lon = -42.489
             // Lat = -22.146
-            Optional<Integer> ret0 = dbRio.QueryLatLonElevation(-42.489, -22.146);
+            Optional<Integer> ret0 = dbRio.QueryLatLonElevation(-43.46083676101143, -22.669875377228426);
             System.out.println("ret0: " + ret0);
             // P1
             // Lon = -42.488

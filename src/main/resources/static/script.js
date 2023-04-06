@@ -71,16 +71,11 @@ fetch('http://localhost:8080/coordinates/Data', {
         latLonArray = data.map(item => [item.lon, item.lat]);
  });
 
-
-
-
-
-
 mapboxgl.accessToken = 'pk.eyJ1Ijoic29sZW1uIiwiYSI6ImNsZmlvbDBibjBrNTg0M25taG1xM2x2YXIifQ.aiMQpTd20YpCaWJfL5BmIg';
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/satellite-v9',
     center: [-45, -22],
     zoom: 8
 });
@@ -89,11 +84,12 @@ var map = new mapboxgl.Map({
  map.on('load', function () {
 
      var coordinates = latLonArray
-     coordinates.forEach(function (coordinate) {
-         new mapboxgl.Marker()
-             .setLngLat(coordinate)
-             .addTo(map);
-     });
+        new mapboxgl.Marker()
+            .setLngLat(coordinates[0])
+            .addTo(map);
+        new mapboxgl.Marker()
+            .setLngLat(coordinates[coordinates.length - 1])
+            .addTo(map);
      
      var geojson = {
          type: 'FeatureCollection',
