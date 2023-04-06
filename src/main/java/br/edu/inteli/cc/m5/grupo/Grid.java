@@ -206,6 +206,34 @@ public class Grid {
                 Edge edge = new Edge(neighborNodeID, weight);
                 node.addNeighbor(edge);
             };
+            if (nodeID + lengthNodes + 1 < (lengthNodes * heightNodes) && (nodeID + 1) % lengthNodes != 0) { // Verifica se existe um vizinho na diagonal inferior direita.
+                int neighborNodeID = nodeID + lengthNodes + 1;
+                Nodes neighborNode = grid.get(neighborNodeID);
+                double weight = calculateNeighborWeight(node, neighborNode);
+                Edge edge = new Edge(neighborNodeID, weight);
+                node.addNeighbor(edge);
+            };
+            if (nodeID + lengthNodes - 1 < (lengthNodes * heightNodes) && nodeID % lengthNodes != 0) { // Verifica se existe um vizinho na diagonal inferior esquerda.
+                int neighborNodeID = nodeID + lengthNodes - 1;
+                Nodes neighborNode = grid.get(neighborNodeID);
+                double weight = calculateNeighborWeight(node, neighborNode);
+                Edge edge = new Edge(neighborNodeID, weight);
+                node.addNeighbor(edge);
+            };
+            if (nodeID - lengthNodes + 1 >= 0 && (nodeID + 1) % lengthNodes != 0) { // Verifica se existe um vizinho na diagonal superior direita.
+                int neighborNodeID = nodeID - lengthNodes + 1;
+                Nodes neighborNode = grid.get(neighborNodeID);
+                double weight = calculateNeighborWeight(node, neighborNode);
+                Edge edge = new Edge(neighborNodeID, weight);
+                node.addNeighbor(edge);
+            };
+            if (nodeID - lengthNodes - 1 >= 0 && nodeID % lengthNodes != 0) { // Verifica se existe um vizinho na diagonal superior esquerda.
+                int neighborNodeID = nodeID - lengthNodes - 1;
+                Nodes neighborNode = grid.get(neighborNodeID);
+                double weight = calculateNeighborWeight(node, neighborNode);
+                Edge edge = new Edge(neighborNodeID, weight);
+                node.addNeighbor(edge);
+            };            
         }
     }
 
