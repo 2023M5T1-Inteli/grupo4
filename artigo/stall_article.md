@@ -39,7 +39,7 @@ Muitos dos conceitos utilizados no artigo são semelhantes aos utilizados no pro
 
 <p>A segurança do piloto nestes voos pode ser violada de diversas maneiras dependendo das características específicas do voo que está sendo realizado: forças opositoras, características topográficas e propriedades da nave estão entre as possíveis causas deste problema.</p>
 
-<p>De acordo com dados publicamente disponibilizados por orgãos públicos, voos em baixa altura (LALT) compõem grande parte dos tipos de ocorrência (Taxonomia SIPAER) dos acidentes aéreos nos segmentos agrícolas, tendo feito parte dos fatores destaque em múltiplas edições da RASO (Relatório Anual de Segurança Operacional) da ANAC (Agência Nacional de Aviação Civil) e no Sumário Estatístico da Aviação Agrícola realizado entre 2010 e 2019 da CENIPA (Centro de Investigação e Prevenção de Acidentes Aeronáuticos).</p>
+<p>De acordo com dados publicamente disponibilizados por orgãos públicos, voos em baixa altura (LALT) compõem grande parte dos tipos de ocorrência (Taxonomia SIPAER) dos acidentes aéreos nós segmentos agrícolas, tendo feito parte dos fatores destaque em múltiplas edições da RASO (Relatório Anual de Segurança Operacional) da ANAC (Agência Nacional de Aviação Civil) e no Sumário Estatístico da Aviação Agrícola realizado entre 2010 e 2019 da CENIPA (Centro de Investigação e Prevenção de Acidentes Aeronáuticos).</p>
 
 <p>Apesar deste trabalho estar focado em operações militares, que por sua natureza lidam com situações confidenciais e de restrito acesso, podemos inferir o risco de acidentes aéreos em baixa altitude visto que o segmento agrícola, ao contrário das outras categorias de voo, comumente adota a prática do voo em baixa altitude para realizar suas operações, e serve como um ponto de atenção aos riscos envolvidos com voos desta natureza.</p>
 
@@ -49,7 +49,7 @@ Muitos dos conceitos utilizados no artigo são semelhantes aos utilizados no pro
 
 <p>No assunto de eficiência, este trabalho busca tomar vantagem das capacidades matemáticas de um computador para gerar um caminho ideal agregando informações sobre o terreno e comprovando, matematicamente, qual é o melhor caminho a se seguir. Utilizando de diversos parâmetros e fórmulas que do contrário, em utilização manual ou auxiliada, se provaria mais exigente e custoso para o time de planejamento. </p>
 
-<p>Logo, as motivações deste trabalho podem ser resumidas nos quesitos de segurança e eficiência, buscando que o resultado de qualquer missão que utilize este algoritmo tenha o resultado ideal de um piloto seguro e o terreno mapeado.</p>
+<p>Logo, as motivações deste trabalho podem ser resumidas nós quesitos de segurança e eficiência, buscando que o resultado de qualquer missão que utilize este algoritmo tenha o resultado ideal de um piloto seguro e o terreno mapeado.</p>
 
 
 
@@ -103,7 +103,7 @@ domínio, aprimorando o processo de solução com mais eficiência do que os mé
 
 <p>A heurística no algoritmo A* é utilizada para estimar a distância restante do nó atual ao nó de destino. Esta heurística se prova muito adequada a este projeto, visto que utilizaremos da variação de altitude entre diferentes pontos e este valor será alterado, dependendo se estamos subindo ou descendo.</p>
 
-<p>Neste caso, utilizaremos como heurística a fórmula "X * distancia + Y * altura, sendo que X + Y = 1". Desta forma, podemos ponderar melhor as possíveis opções do algoritmo e obter a melhor trajetória.</p>
+<p>Neste caso, utilizaremos como heurística a fórmula "X * distância + Y * altura, sendo que X + Y = 1". Desta forma, podemos ponderar melhor as possíveis opções do algoritmo e obter a melhor trajetória.</p>
 
 <p>Estamos, então, procurando o menor valor de peso; uma vez que quanto maior a distância/altura, menos desejável é aquela trajetória.</p>
 
@@ -135,6 +135,7 @@ Ainda em outro trecho de DASGUPTA et. al. (2011), temos:
 > $f = \Omega(g)$ significa $g = O(f)$
 
 # Análise da corretude da solução proposta
+
  <p> "A prova da 'corretude' de um algoritmo consiste em mostrar que ele executa
  corretamente o processo desejado, isto é, que chega à solução procurada Existem
  métodos de prova formal da corretude, empregando Lógica Matemática. Nessa área há
@@ -142,49 +143,65 @@ Ainda em outro trecho de DASGUPTA et. al. (2011), temos:
  termina para quaisquer dados de entrada. Esta última questão é denominada o
  problema da parada." (Setzer V.W. e Carvalheiro F.H. ALGORITMO E SUA ANÁLISE
  (Uma Introdução Didática); Agosto 1993) </p>
+
  ## **Explicando o algoritmo**
+
  <p> O algoritmo A* (pronuncia-se "A estrela") tem a funcionalidade de realizar uma busca de menor custo, dado um grafo conexo, também chamado de malha. Dito isso, o algoritmo funcionaria da seguinte maneira: </p>
+
  * **Primeiro passo:** Dito que o algoritmo tem o objetivo de tracejar uma rota entre dois pontos, faz-se trivial que a primeira coisa a ser feita seja o input de dois nós pelo usuário, um indicando o ponto de partida e um que indique o destino.
  <br>
+
  * **Segundo passo:** Dado os pontos de destino o algoritmo por meio de diferentes métodos de busca, localiza onde esses pontos se encontram em um determinado grafo, pode também ser chamada de malha, independentemente a função disso é como uma área de operações, é lá que o algoritmo vai começar a analisar o terreno que ele tem disponível a fim de encontrar uma rota que ligue os pontos de origem ao de destino.
  <br>
+
  * **Terceiro passo:** Com o conhecimento da malha e a localização dos pontos extremos da rota, o algoritmo comeca a fazer a sua análise. A procura de certa forma é simples, iniciando pelo nó de origem, o algoritmo analisa seus vizinhos e através da expressão $f_{score} = g_{score} + h_{score}$ ele cria uma lista e analisa sempre com prioridade os nós que possuem o menor $f_{score}$
+  
  > É importante ressaltar que dada a expressão $f_{score} = g_{score} + h_{score}$, cada variavel representa:
  >
  > * $g_{score} =$ O somatório de todos os pesos das arestas escolhidas partindo do nó de origem até o nó atual
  > <br>
  >
- > * $h_{score} =$ Representa o custo estimado para chegar do no atual ate o no de destino
+ > * $h_{score} =$ Representa o custo estimado para chegar do nó atual até o nó de destino
  > <br>
  >
  > * $f_{score} =$ Uma estimativa do menor custo possível da rota completa indo da origem ao destino, passando pelo nó atual
+
  * **Quarto passo:** Baseado na lista de prioridade criada, o algoritmo separa duas outras listas: umas de nós já visitados e outra de nós que ainda não foram visitados, o intúito dessa divisão é justamente impedir que o algoritmo fique dando voltas e passe por um mesmo nó mais de uma vez, visto que estamos buscando a rota de menor custo, é trivial que isso não ocorra.
+  
  * **Conclusão final:** Os passos 3 e 4 ocorrem de forma iterativa, isto é, para todo e qualquer nó $n$ a qual o procedimento é realizado, o mesmo procedimento ocorre para o nó $n+1$ enquanto $n+1 \neq$ destino. Assim que o algortimo chega ao destino, a rota está tracejada e o algoritmo retorna o caminho.
  Mas nada basta toda essa explicacao se o algoritmo não for correto, com isso faremos a seguir a corretude do algoritmo
+
  ## **Condições para otimalidade: admissibilidade e consistência**
- Existem diversos algoritmos para encontrar caminhos minimos, mas cada um tem a sua caracteristica propria, no caso do A* temos a heuristica, podemos associar o caso com um simples exemplo: imagine que exista um rato que queira chegar ate um queijo, mas para isso, ele deve percorrer um longo trajeto em um labirinto; como ele nao sabe o caminho ele precisaria ir testando varias alternativas de caminho ate chegar onde deseja. Porem, imagine que o rato tem um otimo olfato e consegue perceber em todo e qualquer ponto do labirinto se o cheiro desse queijo esta se intensificando ou enfraquecendo, para nos, isso eh a heuristica. Assim como o cheiro ajuda o rato a encontrar caminhos mais certeiros e evitar passar desnecessariamente por caminhos que nao levam a lugar nenhum, a heuristica para o algoritmo de A* tem a mesma finalidade, mas para que ela seja valida eh necessario seguir dois pre-requisitos: que ela seja **admissivel** e **consistente** .
- * **Heuristica admissivel**
- $\qquad$ Para que uma heuristica possa ser considerada admissivel, ela nunca pode superestimar o valor real do custo do caminho entre um no $n$ qualquer ate o ponto de destino. Portanto podemos afirmar que para todo e qualquer no $n$ a expressao $h_n \leq g_n$ necessita ser verdadeira para que a heuristica seja admissivel.
+
+ Existem diversos algoritmos para encontrar caminhos mínimos, mas cada um tem a sua característica própria, no caso do A* temos a heurística, podemos associar o caso com um simples exemplo: imagine que exista um rato que queira chegar até um queijo, mas para isso, ele deve percorrer um longo trajeto em um labirinto; como ele não sabe o caminho ele precisaria ir testando várias alternativas de caminho até chegar onde deseja. Porém, imagine que o rato tem um ótimo olfato e consegue perceber em todo e qualquer ponto do labirinto se o cheiro desse queijo esta se intensificando ou enfraquecendo, para nós, isso é a heurística. Assim como o cheiro ajuda o rato a encontrar caminhos mais certeiros e evitar passar desnecessariamente por caminhos que não levam a lugar nenhum, a heurística para o algoritmo de A* tem a mesma finalidade, mas para que ela seja válida é necessário seguir dois pré-requisitos: que ela seja **admissível** e **consistente** .
+
+ * **Heurística admissível**
+  <br>
+ $\qquad$ Para que uma heurística possa ser considerada admissível, ela nunca pode superestimar o valor real do custo do caminho entre um nó $n$ qualquer até o ponto de destino. Portanto podemos afirmar que para todo e qualquer nó $n$ a expressão $h_n \leq g_n$ necessita ser verdadeira para que a heurística seja admissível.
  <br>
- No contexto dado ao projeto, o peso entre um no e seu sucessor eh definido pela expressao
+ No contexto dado ao projeto, o peso entre um nó e seu sucessor é definido pela expressão
  <br>
- > $\omega_{n, n+1} =\left | h_{n+1} - h_n \right | \cdot \alpha + d_{n, n+1} \cdot \beta$
+
+ > $\omega_{n, n+1} =\left | h_{n+1} - h_n \right |+ d_{n, n+1}$
  >
  > dado que:
  >
  > - **$h_x$** - representa a altura de um ponto $x$ qualquer
- > - **$d_{x, x+1}$** - representa a distancia entre os nos $x$ e $x+1$
- > - **$\alpha$** e **$\beta$** - constantes definidas pelo usuario que representam um peso para cada variavel, tal que $\alpha + \beta = 1$
+ > - **$d_{x, x+1}$** - representa a distância entre os nós $x$ e $x+1$
  >
- Visto que a distancia eh um valor deterministico na definicao do peso, fazia-se necessario para a escolha da heuristica a forma mais viavel possivel que represente a menor forma de representar a distancia entre dois pontos, analisado pelo principio da admissibilidade a heuristica jamais pode ser superior ao peso entre dois nos. Dessa forma, escolhemos a distancia de haversine como heuristica, a escolha foi feita baseado no fato em que a distancia euclidiana nao seria viavel ja que ela nao considera a curvatura da Terra, gerando assim imprecisoes nos calculos caso tenha sido escolhida.
+ Visto que a distância é um valor deterministico na definição do peso, fazia-se necessário para a escolha da heurística a forma mais viavel possível que represente a menor forma de representar a distância entre dois pontos, analisado pelo princípio da admissibilidade a heurística jamais pode ser superior ao peso entre dois nós. Dessa forma, escolhemos a distância de haversine como heurística, a escolha foi feita baseado no fato em que a distância euclidiana não seria viavel já que ela não considera a curvatura da Terra, gerando assim imprecisões nos calculos caso tenha sido escolhida.
  <br>
- Portanto, podemos garantir a admissibilidade da heuristica, a partir do momento em que o peso eh a porcentagem da distancia real somado com a diferenca de altitudes dos pontos em questao e a heuristica seria unica e puramente a distancia em linha reta, passando sobre a superficie da Terra, admitindo assim que a heuristica nunca ira ser superior ao custo
+ Portanto, podemos garantir a admissibilidade da heurística, a partir do momento em que o peso é a porcentagem da distância real somado com a diferenca de altitudes dos pontos em questao e a heurística seria unica e puramente a distância em linha reta, passando sobre a superficie da Terra, admitindo assim que a heurística nunca ira ser superior ao custo
+
  * **Heuristica consistente**
- $\qquad$ Quanto a consistencia de uma heurística, se faz necessario a explicabilidade sobre o valor da heuristica de um no qualquer ser menor ou igual ao valor da heuristica do no sucessor somado com o peso da aresta entre o no qualquer e seu sucessor
+<br>
+ $\qquad$ Quanto a consistência de uma heurística, se faz necessário a explicabilidade sobre o valor da heurística de um nó qualquer ser menor ou igual ao valor da heurística do nó sucessor somado com o peso da aresta entre o nó qualquer e seu sucessor
+
  > $h_n \leq \omega_{n, n+1} + h_{n+1}$
  >
- Para que possamos demonstrar a veracidade dessa formula, vamos verificar primeiramente a relacao entre o $f_{score}$ de um no qualquer e de seu sucessor
- > Queremos provar a relaçao entre $f_n$ e $f_{n+1}$, e como ja visto antes $f_{score} = g_{score} + h_{score}$ portanto temos 5 casos possiveis, porem apenas 1 sera valido:
+ Para que possamos demonstrar a veracidade dessa formula, vamos verificar primeiramente a relação entre o $f_{score}$ de um nó qualquer e de seu sucessor
+
+ > Queremos provar a relaçao entre $f_n$ e $f_{n+1}$, e como já visto antes $f_{score} = g_{score} + h_{score}$ portanto temos 5 casos possiveis, porem apenas 1 sera valido:
  >
  > 1. $\quad f_n < f_{n+1} \rightarrow g_n + h_n < g_{n+1} + h_{n+1}$
  > 2. $\quad f_n \leq f_{n+1} \rightarrow g_n + h_n \leq g_{n+1} + h_{n+1}$
@@ -192,13 +209,13 @@ Ainda em outro trecho de DASGUPTA et. al. (2011), temos:
  > 4. $\quad f_n > f_{n+1} \rightarrow g_n + h_n > g_{n+1} + h_{n+1}$
  > 5. $\quad f_n \geq f_{n+1} \rightarrow g_n + h_n \geq g_{n+1} + h_{n+1}$
  >
- > Como sabemos, o $g_{score}$ representa o somatorio de pesos das arestas escolhidas para o caminho, portanto podemos afirmar a relacao $g_{n+1} = g_n + \omega_{n, n+1}$ que diz respeito sobre o $g_{score}$ de um no ser igual ao $g_{score}$ do no predecessor somado ao peso da aresta que liga o no predecessor ao atual. Dito isso, eh possivel afirmar que $g_{n+1} > g_n$ visto que nao admitimos arestas de peso 0, ja que eh impossivel a coexistencia de dois pontos com mesmas latitudes e longitudes no grafo proposto
+ > Como sabemos, o $g_{score}$ representa o somatório de pesos das arestas escolhidas para o caminho, portanto podemos afirmar a relação $g_{n+1} = g_n + \omega_{n, n+1}$ que diz respeito sobre o $g_{score}$ de um nó ser igual ao $g_{score}$ do nó predecessor somado ao peso da aresta que liga o nó predecessor ao atual. Dito isso, é possível afirmar que $g_{n+1} > g_n$ visto que não admitimos arestas de peso 0, já que é impossível a coexistência de dois pontos com mesmas latitudes e longitudes no grafo proposto
  > <br>
  > <br>
- > Dada a afirmacao a respeito do $g_{score}$ conseguimos definir que dos 5 casos vistos anteriormente o unico que aceita a proposicao da heuristica admissivel eh $f_n \leq f_{n+1}$ visto que para todos os outros casos para que a relacao seja verdadeira, ou a heuristica $h_{score}$ deve ser superior ao custo $g_{score}$, o que eh um absurdo, ou seria o caso 1. que nao inclui o caso em que $h_n = h_{n+1}$
+ > Dada a afirmação a respeito do $g_{score}$ conseguimos definir que dos 5 casos vistos anteriormente o único que aceita a proposição da heurística admissível é $f_n \leq f_{n+1}$ visto que para todos os outros casos para que a relação seja verdadeira, ou a heurística $h_{score}$ deve ser superior ao custo $g_{score}$, o que é um absurdo, ou seria o caso 1. que não inclui o caso em que $h_n = h_{n+1}$
  > <br>
  > <br>
- > Tendo a relacao entre o $f_{score}$ de um no e seu sucessor e tambem a relacao do $g_{score}$ de um no com seu sucessor, vamos juntar tudo em uma mesma formula:
+ > Tendo a relação entre o $f_{score}$ de um nó e seu sucessor e tambem a relação do $g_{score}$ de um nó com seu sucessor, vamos juntar tudo em uma mesma formula:
  > <br>
  > <br>
  > $f_n \leq f_{n+1}$
@@ -208,13 +225,36 @@ Ainda em outro trecho de DASGUPTA et. al. (2011), temos:
  > $g_n + h_n \leq g_n + \omega_{n, n+1} + h_{n+1}$
  > <br>
  > <br>
- > Vejamos que o termo $g_n$ aparece dos 2 lados da desigualdade, por isso podemos retira-lo sem que haja alteracao e com isso concluimos a demonstracao da formula apresentada pelo principio que determina a consistencia de uma heuristica
+ > Vejamos que o termo $g_n$ aparece dos 2 lados da desigualdade, por isso podemos retira-lo sem que haja alteracao e com isso concluimos a demonstracao da formula apresentada pelo princípio que determina a consistência de uma heurística
  > <br>
  > <br>
  > $h_n \leq \omega_{n, n+1} + h_{n+1}$
  > <br>
  > <br>
  > $c. q. d.$
+
+## **Otimalidade do algoritmo A***
+
+Queremos provar que de fato o caminho $C$* partindo do nó de origem ( $i$ ) e indo até o nó de destino ( $j$ ), possui o menor custo possível. Para a comprovação dessa proposição é necessário a comprovação de duas outras hipóteses:
+<br>
+<br>
+1. **Provar que nós-objetivos aparecem na fila para expansão**
+   
+   Partindo do pressuposto em que o fator de ramificação é finito, isto é, o problema tem fim, podemos afirmar que o algoritmo A* sempre tem ao menos uma solução, portanto isso nos comprova que ele não fica preso dentro de ciclos evitando o caso da impossibilidade de encontrar o nó-objetivo, em outras palavras, o destino.
+<br>
+<br>
+2. **Provar que mesmo se nós objetivos forem encontrados, não necessariamente serão expandidos**
+
+    Suponhamos um estado sub-ótimo para $j$ na fila de expansão, isto é, imaginando que o nó $j$ apareça na lista de nós não visitados, mas dentro do cenário que $f_j$ não é o menor custo da lista de prioridade.
+
+    Dito anteriormente que $j$ é o nó de destino, sabemos então que $h_j = 0$, e como o caminho encontrado até $j$ não é o de menor custo dentro da lista de prioridade, isto é, existem outros caminhos mesmo que seja para outros nós que não são o destino que apresentam custos menores que o custo encontrado até j podemos afirmar com isso que $f_j = g_j + 0 = g_j > C$*
+
+    Um nó $n$ qualquer, pertence ao caminho de menor custo quando sua heurística nunca superestima o custo real, isto é, a heurística é admissível, fazendo com que então $f_n \leq C$* e é por isso que dentro do contexto dado, para todo e qualquer nó $n$ que respeite a suposição $f_n \leq C$* será sempre o primeiro a ser escolhido para seguir o caminho, independente se o nó de destino ja tenha sido avistado.
+
+<br>
+
+### **Conclusão final**
+Se lembrarmos da demonstração de que toda heurística, para ser válida deve ser consistente, lembramos que para todo e qualquer nó $n$ a proposição $f_n \leq f_{n+1}$ deve ser verdadeira, portanto podemos afirmar que mesmo que um nó apareça na lista de prioridade, ele só será visitado caso ele possua o menor caminho em comparação aos demais. Dessa forma, conseguimos comprovar que o caminho $C$* partindo de $i$ e indo a $j$ sempre será o de menor custo, pois para todo e qualquer nó $n$ que pertença ao caminho $C$* a invariante do laço $f_n \leq C$* sempre é respeitada.
 
 # Resultados obtidos
 
