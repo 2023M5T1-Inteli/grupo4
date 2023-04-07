@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link href='//fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800'
-        rel='stylesheet' type='text/css'>
-
+    <link href='//fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800'rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
@@ -19,11 +20,53 @@
     <title>Stall</title>
 </head>
 
-<body>
+<body onload="atualizarPagina();">
+    <div class="loading-container">
+        <div class="dot-spinner">
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+          <div class="dot-spinner__dot"></div>
+        </div>
+      </div>
+
+
     <div class="input_box" id="input_box">
-        <div class="extended_input" id="ext_in">
+        
+        <div class="page" id="page1">
+            <div>
+                <p id="head">MBR</p>
+                <p id="subline">MBR - Minimum Bounding Rectangle <br>Será utilizado para otimizar a busca das trajetórias possíveis. É definido pelas coordenadas de seus cantos superior esquerdo e inferior direito que delimitaram uma área limite que o algoritmo irá acessar para determinar a trajetória   </p>
+
+
+                <p id="title">Ponto superior Esquerdo</p>
+                <p id="subtitle"> Latitude:
+                    <input placeholder="XXºXX'" id="mbr_lat_str" class="input" type="number">
+                </p>
+                <p id="subtitle"> Longitude:
+                    <input placeholder="XXºXX'" id="mbr_lon_str" class="input" type="number">
+                </p>
+
+                <p id="title">Ponto inferior Direito</p>
+                <p id="subtitle"> Latitude:
+                    <input placeholder="XXºXX'" id="mbr_lat_end" class="input" type="number">
+                </p>
+                <p id="subtitle"> Longitude:
+                    <input placeholder="XXºXX'" id="mbr_lon_end" class="input" type="number">
+                </p>
+            </div>
+            
+            <button type="button" id="proximo" class="button buttonNext" onclick="proximaPagina();">Próximo</button>
+        </div>
+        
+        <div class="page" id="page2">
             <div> <!--ponto inicial-->
-                <p id="title">Ponto inicial</p>
+                <p id="head">Preencha com as coordenadas de sua viagem</p>
+                <p id="title">Origem</p>
                 <p id="subtitle"> Latitude:
                     <input placeholder="XXºXX'" id="lat_str" class="input" type="number">
                 </p>
@@ -33,7 +76,7 @@
             </div>
             <br>
             <div> <!--ponto final-->
-                <p id="title">Ponto final</p>
+                <p id="title">Destino</p>
                 <p id="subtitle"> Latitude:
                     <input placeholder="XXºXX'" id="lat_end" class="input" type="number">
                 </p>
@@ -41,41 +84,19 @@
                     <input placeholder="XXºXX'" id="lon_end" class="input" type="number">
                 </p>
             </div>
-            <div>
-                <p id="title">MBR</p>
-                <p id="subtitle2">Ponto Inicial</p>
-                <p id="subtitle"> Latitude:
-                    <input placeholder="XXºXX'" id="mbr_lat_str" class="input" type="number">
-                </p>
-                <p id="subtitle"> Longitude:
-                    <input placeholder="XXºXX'" id="mbr_lon_str" class="input" type="number">
-                </p>
-                <p id="subtitle2">Ponto Final</p>
-                <p id="subtitle"> Latitude:
-                    <input placeholder="XXºXX'" id="mbr_lat_end" class="input" type="number">
-                </p>
-                <p id="subtitle"> Longitude:
-                    <input placeholder="XXºXX'" id="mbr_lon_end" class="input" type="number">
-                </p>
-            </div>
+            <button type="button" id="anterior" class="button buttonBack" onclick="paginaAnterior();">Anterior</button>
+            <button class="button buttonCalc" id="bot-calc" onclick="enviarDados()">Calcular</button>
+        </div>
+        <input type="hidden" id="paginaAtual" value="1">
+            
+        
 
-            <button class="btn" id="bot-calc" onclick="enviarDados()">Calcular</button>
-        </div>
-        <div class="short_input" id="sht_in">
-            <a>Ponto inicial - </a>
-            <a id="lat_1"></a>
-            <a id="lon_1"></a>
-            <a style="padding-left: 30px;">Ponto final - </a>
-            <a id="lat_2"></a>
-            <a id="lon_2"></a>
-        </div>
     </div>
     <div id="graph">
         <div id="map">
 
         </div>
     </div>
-
 
     <script src="./script.js"></script>
 

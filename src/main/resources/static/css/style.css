@@ -1,3 +1,6 @@
+
+
+/* --------------- TELA PRINCIPAL ---------------------*/
 body {
     display: flex;
     background-color: #F2F2F2;
@@ -8,36 +11,63 @@ body {
     margin: 0;
 }
 
+.page {
+    display: none;
+    align-items: center;
+}
+
 .input_box {
-    background-color: #D9D9D9;
+    background-color: #ffffff;
     height: 100%;
     width: 30%;
-    overflow-y: scroll;
+
+}
+
+#head{
+    color: #027065;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.4em;
+    margin-left: 2.5vw;
+    margin-right: 2vw;
+    margin-top: 4vw;
+    margin-bottom: 1vw;
+    font-weight:500;
 }
 
 #title {
     color: #027065;
-    font-weight: 800;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    margin-left: 2vw;
-
-
+    font-weight: 450;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    margin-left: 2.5vw;
+    margin-top: 2vw;
 }
 
 #subtitle {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 2vw;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
 
 }
 
 #subtitle2 {
-    font-family: 'Montserrat', sans-serif;
-    margin-left: 2vw;
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
+    margin-top: 5vh;
+    font-weight: 450;
+    font-size: 1.5em;
     color: #027065;
 
 }
+
+#subline{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2.5vw;
+    margin-right: 2vw;
+    color: #7e7c7c;
+
+
+}
+
 
 .input {
     border: 0px;
@@ -46,78 +76,75 @@ body {
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     margin-left: 1vw;
+    margin-top: 1vh;
     color: #333;
+    background-color: #f3efef;
 
 }
 
-.eye_icon {
-    position: absolute;
-    top: 278px;
-    right: 16px;
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
     cursor: pointer;
-    border-radius: 100%;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 6px;
+
 }
 
-.eye_button {
-    cursor: pointer;
-    border-radius: 100%;
-    border-width: 1.5px;
+.buttonNext {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 18vw;
+    margin-top: 10vh;
+
 }
 
-#closed_eye {
-    width: 22px;
-    height: 20px;
+.buttonNext:hover {
+    background-color: #027065;
+    color: white;
 }
 
-#open_eye {
-    width: 22px;
-    height: 20px;
+.buttonBack {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 5vw;
+    margin-top: 11vh;
+
+}
+
+.buttonBack:hover {
+    background-color: #e7e7e7;
+    color: black;
 }
 
 
-.short_input {
-    display: none;
+.buttonCalc {
+    margin-top: 11vh;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin-left: 4.5vw;
+
 }
 
-#bot-calc {
-    background-color: rgb(2, 112, 101);
-    color: rgb(242, 242, 242);
-    height: 4em;
-    width: 100%;
-    font-weight: 800;
-    margin-top: 2em;
-    text-transform: uppercase;
-    border-style: none;
+.buttonCalc:hover {
+    background-color: #027065;
+    color: white;
 }
 
-#bot-calc:hover {
-    background-color: rgb(242, 242, 242);
-    color: rgb(2, 112, 101);
-    cursor: pointer;
-}
-
-#bot-calc:active {
-    background-color: rgb(242, 242, 242, 0.75);
-}
-
-.btn:active {
-    font-size: 0.75em;
-}
-
-.svg {
-    position: absolute;
-    width: 70vw;
-    height: 100vh;
-}
 
 #graph {
     width: 70%;
 }
-/* #map {
-    width: 50%;
-    height: 500px;
-} */
-
 
 .mapboxgl-canvas {
     position: absolute;
@@ -132,3 +159,144 @@ body {
     height: 100%;
     position: relative;
 }
+  /* --------------------------------------------------------------*/
+
+
+
+
+
+/* ------------------ TELA DE CARREGAMENTO ---------------------*/
+
+.loading-container {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    display: none;
+}
+
+.dot-spinner {
+    --uib-size: 5rem;
+    --uib-speed: .9s;
+    --uib-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--uib-size);
+    width: var(--uib-size);
+  }
+  
+  .dot-spinner__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot-spinner__dot::before {
+    content: '';
+    height: 20%;
+    width: 20%;
+    border-radius: 50%;
+    background-color: var(--uib-color);
+    transform: scale(0);
+    opacity: 0.5;
+    animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+  }
+  
+  .dot-spinner__dot:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  
+  .dot-spinner__dot:nth-child(2)::before {
+    animation-delay: calc(var(--uib-speed) * -0.875);
+  }
+  
+  .dot-spinner__dot:nth-child(3) {
+    transform: rotate(90deg);
+  }
+  
+  .dot-spinner__dot:nth-child(3)::before {
+    animation-delay: calc(var(--uib-speed) * -0.75);
+  }
+  
+  .dot-spinner__dot:nth-child(4) {
+    transform: rotate(135deg);
+  }
+  
+  .dot-spinner__dot:nth-child(4)::before {
+    animation-delay: calc(var(--uib-speed) * -0.625);
+  }
+  
+  .dot-spinner__dot:nth-child(5) {
+    transform: rotate(180deg);
+  }
+  
+  .dot-spinner__dot:nth-child(5)::before {
+    animation-delay: calc(var(--uib-speed) * -0.5);
+  }
+  
+  .dot-spinner__dot:nth-child(6) {
+    transform: rotate(225deg);
+  }
+  
+  .dot-spinner__dot:nth-child(6)::before {
+    animation-delay: calc(var(--uib-speed) * -0.375);
+  }
+  
+  .dot-spinner__dot:nth-child(7) {
+    transform: rotate(270deg);
+  }
+  
+  .dot-spinner__dot:nth-child(7)::before {
+    animation-delay: calc(var(--uib-speed) * -0.25);
+  }
+  
+  .dot-spinner__dot:nth-child(8) {
+    transform: rotate(315deg);
+  }
+  
+  .dot-spinner__dot:nth-child(8)::before {
+    animation-delay: calc(var(--uib-speed) * -0.125);
+  }
+  
+  @keyframes pulse0112 {
+    0%,
+    100% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+  
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* --------------------------------------------------------------*/
+
+
+
+  /* ------------------ TELA HOME ---------------------*/
+
+  #homePage{
+    background-color: #ffffff;
+  }
+
+
+
+
+    /* --------------------------------------------------------------*/
+
+
