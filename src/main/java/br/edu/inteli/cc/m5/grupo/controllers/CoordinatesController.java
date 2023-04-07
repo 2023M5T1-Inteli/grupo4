@@ -23,8 +23,9 @@ public class CoordinatesController {
     public List<NodeEntity> listAllCoordinates() {
         return nodeRepository.findAll();
     }
-     
+    
     @PostMapping("/process")
+
     public Coordinates enviarDados(@RequestBody Coordinates newCoord) {
 
         System.out.println("lat_str: " + newCoord.getLat_str());

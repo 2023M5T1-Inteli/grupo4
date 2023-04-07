@@ -354,16 +354,16 @@ public class Grid {
         return newLongitude;
     }
 
-    public static void main(String[] args) {
-        Grid grid = new Grid(-22.5889042043, -45.172953, -22.905374, -44.5794347619519);
-        AStar aStar = new AStar();
-        java.util.List<Nodes> path = aStar.findPath(grid, -22.5889042043, -45.172953, -22.572625513106775, -45.193966081084056);
-        int a = 0;
+    // public static void main(String[] args) {
+    //     Grid grid = new Grid(-22.5889042043, -45.172953, -22.905374, -44.5794347619519);
+    //     AStar aStar = new AStar();
+    //     java.util.List<Nodes> path = aStar.findPath(grid, -22.5889042043, -45.172953, -22.572625513106775, -45.193966081084056);
+    //     int a = 0;
 
-        for(Nodes node : path){
-            System.out.println(node);
-            a++;
-        }
-        System.out.println(a);
-    }
+    //     for(Nodes node : path){
+    //         System.out.println(node);
+    //         a++;
+    //     }    
+    //     System.out.println(a);
+    // }
 }

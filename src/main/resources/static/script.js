@@ -11,7 +11,6 @@ var map = new mapboxgl.Map({
 });
 
 function enviarDados() {
-
     var lat_str = document.getElementById("lat_str").value;
     var lon_str = document.getElementById("lon_str").value;
     var lat_end = document.getElementById("lat_end").value;
@@ -40,14 +39,27 @@ function enviarDados() {
         headers: { 'Content-type': 'application/json' }
     };
 
+    const loading = document.querySelector('.loading-container');
+    loading.style.display = 'flex';
+
+    console.log("vai entrar no fetch")
+
     fetch(URL, postRequest)
-        .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; })
-        .then(resposta => resposta.json());
+        .then(resposta => {
+            console.log("primeiro then do post deu certo");
+            return resposta})
+            .catch(error => {
+                throw Error(error)
+            })
+            .then(resposta => {resposta.json()
+                console.log("segundo then do post deu certo");
+            loading.style.display = 'none';
+            console.log("Sou mt lindo");
+            getData();
+        });
     
     var lat_center = (parseInt(mbr_lat_end) + parseInt(mbr_lat_str)) * 0.5;
     var lon_center = (parseInt(mbr_lon_end) + parseInt(mbr_lon_str)) * 0.5;
-
-    console.log(lat_center);
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoic29sZW1uIiwiYSI6ImNsZmlvbDBibjBrNTg0M25taG1xM2x2YXIifQ.aiMQpTd20YpCaWJfL5BmIg';
     var map = new mapboxgl.Map({
@@ -58,18 +70,21 @@ function enviarDados() {
     });
 }
 
-var nodes;
-var links;
 
-const padding = 50;
+function getData() {
 
-fetch('http://localhost:8080/coordinates/Data', {
+    console.log("Chamou o getData");
+
+    fetch('http://localhost:8080/coordinates/Data', {
     method: 'GET'
-})
+})  
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         latLonArray = data.map(item => [item.lon, item.lat]);
+        createMap(latLonArray)
  });
+
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic29sZW1uIiwiYSI6ImNsZmlvbDBibjBrNTg0M25taG1xM2x2YXIifQ.aiMQpTd20YpCaWJfL5BmIg';
 
@@ -121,7 +136,6 @@ var map = new mapboxgl.Map({
          }
      });
  });
-
 
 
  // Função para avançar para a próxima página

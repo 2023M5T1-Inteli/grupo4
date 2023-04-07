@@ -19,8 +19,6 @@ Planejador de trajetórias para voos em baixa altitude
     - [Contexto do problema](#contexto-do-problema)
     - [Variáveis de decisão do problema](#variáveis-de-decisão-do-problema)
     - [Limitações](#limitações)
-  - [Objetivos](#objetivos)
-    - [Objetivos gerais](#objetivos-gerais)
     - [Objetivos específicos](#objetivos-específicos)
   - [Partes interessadas](#partes-interessadas)
 - [Análise do Problema e Solução](#análise-do-problema-e-solução)
@@ -29,38 +27,21 @@ Planejador de trajetórias para voos em baixa altitude
   - [5 Forças de Porter](#5-forças-de-porter)
   - [Proposta de Valor: Value Proposition Canvas](#proposta-de-valor-value-proposition-canvas)
   - [Matriz de Risco](#matriz-de-risco)
-      - [Ameaças](#ameaças)
-      - [Oportunidades](#oportunidades)
+    - [Ameaças](#ameaças)
+    - [Oportunidades](#oportunidades)
 - [Requisitos do Sistema](#requisitos-do-sistema)
   - [Personas](#personas)
   - [Histórias dos usuários (user stories)](#histórias-dos-usuários-user-stories)
     - [**User Stories Róger Augusto**](#user-stories-róger-augusto)
     - [**User Stories Fabiana Costa**](#user-stories-fabiana-costa)
-- [Arquitetura do Sistema](#arquitetura-do-sistema)
-  - [Módulos do Sistema e Visão Geral (Big Picture)](#módulos-do-sistema-e-visão-geral-big-picture)
-  - [Descrição dos Subsistemas](#descrição-dos-subsistemas)
-    - [Requisitos de software](#requisitos-de-software)
-  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [UX e UI Design](#ux-e-ui-design)
-  - [Wireframe + Storyboard](#wireframe--storyboard)
-  - [Design de Interface - Guia de Estilos](#design-de-interface---guia-de-estilos)
 - [Projeto de Banco de Dados](#projeto-de-banco-de-dados)
   - [Modelagem inicial](#modelagem-inicial)
     - [Modelagem Matemática do Problema](#modelagem-matemática-do-problema)
       - [Tomada de Decisão - Variáveis de Decisão](#tomada-de-decisão---variáveis-de-decisão)
       - [Objetivo - Função Objetivo](#objetivo---função-objetivo)
       - [Restrições - Limitações](#restrições---limitações)
-  - [Modelo Conceitual](#modelo-conceitual)
-  - [Modelo Lógico](#modelo-lógico)
-- [Teste de Software](#teste-de-software)
-  - [Testes Unitários](#testes-unitários)
-  - [Teste de Usabilidade](#teste-de-usabilidade)
 - [Análise de Dados](#análise-de-dados)
   - [Visão geral](#visão-geral)
-- [Manuais](#manuais)
-  - [Manual de Implantação](#manual-de-implantação)
-  - [Manual do Usuário](#manual-do-usuário)
-  - [Manual do Administrador](#manual-do-administrador)
 - [Sistema](#sistema)
   - [Arquitetura da Solução](#arquitetura-da-solução)
 - [Referências](#referências)
@@ -87,7 +68,7 @@ A empresa desde 2001 faz parte do grupo Elbit Systems, líder mundial no setor d
 
 Também tem se destacado como pioneira na modernização de aeronaves militares da Força Aérea Brasileira, incluindo o Embraer EMB-314 Super Tucano, o AMX e o F-5EM, além de ser reconhecida por fornecer peças para veículos aéreos remotamente pilotados, sistemas terrestres, e equipamentos eletro-ópticos para aplicações navais.
 
-Contando com mais de 300 colaboradores (incluindo mais de 100 desenvolvedores) em suas instalações de 10.000 m², a empresa produz ou repara mais de 3.000 equipamentos por ano, gerando uma receita anual de $100 milhões, metade do qual é obtida por meio de exportações. Dentre seus principais clientes nacionais, destacam-se a Embraer, a SAAB e a Helibras. 
+Contando com mais de 300 colaboradores (incluindo mais de 100 desenvolvedores) em suas instalações de 10.000 m², a empresa produz ou repara mais de 3.000 equipamentos por ano, gerando uma receita anual de $100 milhões, metade do qual é obtida por meio de exportações. Dentre seus principais clientes nacionais, destacam-se a Embraer, a SAAB e a Helibras, enquanto seus principais concorrentes são AIAB e Aeroplace, ambas empresas de fabricação de componentes de aviação e aeroespaciais.
 
 
 ## O Problema
@@ -108,10 +89,6 @@ Tudo que irá compor o peso das arestas será utilizado na solução, sendo a di
 <li>Entre outras que o usuário pode designar.
 </ul>
 <li>Necessidade do algoritmo de dados prévios sobre a aeronave.
-
-## Objetivos
-
-### Objetivos gerais
 
 <br>
 
@@ -182,12 +159,16 @@ A solução proposta, sob uma perspectiva empresarial, será avaliada de forma �
 
 ## Análise do cenário: Matriz SWOT
 
- A meta da análise SWOT é facilitar na identificação de características que ajudem o desenvolvimento do projeto. Assim, ela pode potencializar suas forças, mitigar suas fraquezas e minimizar erros, procurar oportunidades para melhorar seus produtos ou criar novos e se manter alerta às ameaças.
+ A matriz SWOT é uma ferramenta de análise estratégica que permite uma avaliação completa e sistemática dos pontos fortes e fracos de uma empresa, bem como das oportunidades e ameaças em seu ambiente externo. SWOT é uma sigla que significa Strengths (forças), Weaknesses (fraquezas), Opportunities (oportunidades) e Threats (ameaças).
+ <br>
+ Ela é importante para a empresa identificar as áreas que precisam de melhoria e as oportunidades que podem ser aproveitadas. Com base nisso, a empresa pode desenvolver estratégias para enfrentar as ameaças e aproveitar as oportunidades. 
+<br>
+Em resumo, a análise SWOT pode ser uma ferramenta poderosa para ajudar as empresas a planejar e executar projetos com mais eficiência, aumentando suas chances de sucesso e minimizando os riscos envolvidos.
  
 <p align="center">
-<img width="730" height="470" src="img/Swot.PNG.jpg">
+<img width="730" height="470" src="img/Swot.jpg.png">
 </p>
-Fonte: Site da AEL
+Fonte: Site oficial da AEL e encontros com parceiros.
 
 
 ## 5 Forças de Porter
@@ -213,19 +194,17 @@ Analisando a proposta de valor, é possível identificar facilmente quais foram 
 
  O principal objetivo da matriz de risco e oportunidades é a clareza oferecida ao grupo em relação à eventuais problemas que possam ocorrer ao decorrer do desenvolvimento do projeto, possibilitando ao grupo a possibilidade de se previnir dos riscos e buscar as melhores oportunidades.
  
- #### Ameaças
+ ### Ameaças
  <p align="center">
 <img width="705" height="480" src="img/Ameaças.png">
 </p>
 
- #### Oportunidades
+ ### Oportunidades
  <p align="center">
 <img width="650" height="480" src="img/Oportunidades.jpg">
 </p>
 
 # Requisitos do Sistema
-
-*Descrição_dos_requisitos*
 
 ## Personas
 <p align="center">
@@ -243,48 +222,27 @@ Analisando a proposta de valor, é possível identificar facilmente quais foram 
 As user stories serão o norte do grupo para o desenvolvimento do algoritmo, uma vez que será a base de informações do público que queremos atingir através da solução. Tendo isto em vista, o grupo entendeu que deveria escalar as user stories da nossa persona em 5 tópicos, que serão apresentados a seguir:
 
 ### **User Stories Róger Augusto**
-<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero o algoritmo proposto, para me auxiliar no traçamento de rotas mais eficazes.
+<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero um algoritmo eficiente, para me auxiliar no traçar de rotas mais eficientes.
 
-<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero saber os possíveis obstáculos na trajetória, para garantir a segurança do piloto e da aeronave levando em conta aspectos naturais, como relevo e clima.
+<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero uma aplicação web simples, para facilitar meu uso do algoritmo.
 
-<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero integrar os dados da aeronave, para saber quando alterar o percurso e os recursos necessários para isso.
+<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero conseguir passar a área da missão, para conseguir definir que a trajetória fique somente dentro da área escolhida.
 
-<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero adicionar áreas de exclusão, para que a trajetória não considere esse caminho.
 
-<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero analisar a trajetória para poder discutir sobre os riscos e ganhos dessa missão.
+<li>Eu, como Head da Equipe de Tráfego Aéreo Militar, quero vizualisar a trajetória para poder discutir sobre os riscos e ganhos dessa missão.
 <br>
 <br>
 
 ### **User Stories Fabiana Costa**
   
-<li>Eu, como piloto, quero percorrer a rota tracejada para evitar colisões.
+<li>Eu, como piloto, quero percorrer uma rota segura para evitar colisões.
 
-<li>Eu, como piloto, quero entrar em território inimigo para garantir a segurança nacional.
+<li>Eu, como piloto, quero ter acesso à rota mais otimizada possível para conseguir completar minha tarefa de uma forma mais otimizada e sem gastos a toa de combustível e tempo.
 
-<li>Eu, como piloto, quero ter acesso à rota mais otimizada possível para conseguir completar minha tarefa de uma forma mais otimizada.
+<li>Eu, como piloto, quero seguir a rota mais otimizada possível, para que eu consiga completar minha missão e garantir a segurança nacional.
 
-<li>Eu, como piloto, quero ter acesso à rota mais otimizada possível para que eu consiga entrar em território inimigo por meio de voos a baixa altitude e garanta a segurança nacional, sem que haja gasto a toa de combustível e tempo.
 <br>
 <br>
-
-
-# Arquitetura do Sistema
-
-## Módulos do Sistema e Visão Geral (Big Picture)
-
-## Descrição dos Subsistemas
-
-### Requisitos de software
-
-
-## Tecnologias Utilizadas
-
-
-# UX e UI Design
-
-## Wireframe + Storyboard
-
-## Design de Interface - Guia de Estilos
 
 
 # Projeto de Banco de Dados
@@ -333,20 +291,6 @@ nó F: X<sub>af</sub> + X<sub>kf</sub> + X<sub>lf</sub> + X<sub>gf</sub> + X<sub
 nó Y: X<sub>xy</sub> + X<sub>sy</sub> + X<sub>ty</sub> = 1<br>
 
 
-
-
-## Modelo Conceitual
-
-## Modelo Lógico
-
-
-# Teste de Software
-
-## Testes Unitários
-
-## Teste de Usabilidade
-
-
 # Análise de Dados
 
 ## Visão geral
@@ -384,15 +328,6 @@ nó Y: X<sub>xy</sub> + X<sub>sy</sub> + X<sub>ty</sub> = 1<br>
   <li>W121_N38.dt2
   </ul>
 
-
-# Manuais
-
-## Manual de Implantação
-
-## Manual do Usuário
-
-## Manual do Administrador
-
 # Sistema
 
 ## Arquitetura da Solução
@@ -403,3 +338,6 @@ Nosso sistema será composto por 3 "fases". Primeiro o usuário fará um input c
 
 
 # Referências
+<a href="https://www.ael.com.br">Site oficial da empresa<a>
+<br>
+<a href="https://www.ael.com.br/ael-sistemas.html">Site oficial sobre a empresa<a>
