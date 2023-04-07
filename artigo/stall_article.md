@@ -135,118 +135,86 @@ Ainda em outro trecho de DASGUPTA et. al. (2011), temos:
 > $f = \Omega(g)$ significa $g = O(f)$
 
 # Análise da corretude da solução proposta
-
-<p> A prova da "corretude" de um algoritmo consiste em mostrar que ele executa
-corretamente o processo desejado, isto é, que chega à solução procurada Existem
-métodos de prova formal da corretude, empregando Lógica Matemática. Nessa área há
-duas dasses de problemas: a prova da execução correta e a prova de que a execução
-termina para quaisquer dados de entrada. Esta última questão é denominada o
-problema da parada. (Setzer V.W. e Carvalheiro F.H. ALGORITMO E SUA ANÁLISE
-(Uma Introdução Didática); Agosto 1993) </p>
-
-## **Explicando o algoritmo**
-
-<p> O algoritmo A* (pronuncia-se "A estrela") tem a funcionalidade de realizar uma busca de menor custo, dado um grafo conexo, também chamado de malha. Dito isso, o algoritmo funcionaria da seguinte maneira: </p>
-
-* **Primeiro passo:** Dito que o algoritmo tem o objetivo de tracejar uma rota entre dois pontos, faz-se trivial que a primeira coisa a ser feita seja o input de dois nós pelo usuário, um indicando o ponto de partida e um que indique o destino.
-<br>
-
-* **Segundo passo:** Dado os pontos de destino o algoritmo por meio de diferentes métodos de busca, localiza onde esses pontos se encontram em um determinado grafo, pode também ser chamada de malha, independentemente a função disso é como uma área de operações, é lá que o algoritmo vai começar a analisar o terreno que ele tem disponível a fim de encontrar uma rota que ligue os pontos de origem ao de destino.
-<br>
-
-* **Terceiro passo:** Com o conhecimento da malha e a localização dos pontos extremos da rota, o algoritmo comeca a fazer a sua análise. A procura de certa forma é simples, iniciando pelo nó de origem, o algoritmo analisa seus vizinhos e através da expressão $f_{score} = g_{score} + h_{score}$ ele cria uma lista e analisa sempre com prioridade os nós que possuem o menor $f_{score}$
-
-> É importante ressaltar que dada a expressão $f_{score} = g_{score} + h_{score}$, cada variavel representa:
->
-> * $g_{score} =$ O somatório de todos os pesos das arestas escolhidas partindo do nó de origem até o nó atual
-> <br>
-> 
-> * $h_{score} =$ Também chamado de "Heurística", ele representa a distancia de Haversine entre o nó atual até o nó de destino
-> <br>
->
-> * $f_{score} =$ Uma estimativa do menor custo possível da rota completa indo da origem ao destino, passando pelo nó atual
-
-* **Quarto passo:** Baseado na lista de prioridade criada, o algoritmo separa duas outras listas: umas de nós já visitados e outra de nós que ainda não foram visitados, o intúito dessa divisão é justamente impedir que o algoritmo fique dando voltas e passe por um mesmo nó mais de uma vez, visto que estamos buscando a rota de menor custo, é trivial que isso não ocorra.
-
-* **Conclusão final:** Os passos 3 e 4 ocorrem de forma iterativa, isto é, para todo e qualquer nó $n$ a qual o procedimento é realizado, o mesmo procedimento ocorre para o nó $n+1$ enquanto $n+1 \neq$ destino. Assim que o algortimo chega ao destino, a rota está tracejada e o algoritmo retorna o caminho.
-
-Mas nada basta toda essa explicacao se o algoritmo não for correto, com isso faremos a seguir a corretude do algoritmo
-
-## **Condições para otimalidade: admissibilidade e consistência**
-
-> De acordo com as ideias apresentadas em "Inteligência Artificial" por Peter Norvig:
-<br>
-<br>
-$\quad$ A fins de atingirmos a otimalidade do algoritmo A* é trivial que a heurística $h_{score}$ seja **admissível** e **consistente**. Para que uma heurística seja admissível, faz-se necessário que ela nunca superestime o custo de atingir o objetivo. Devido ao $g_{score}$ ser o custo real para atingir um nó qualquer $n$ ao longo do caminho atual, e $f_{score} = g_{score} + h_{score}$ temos como consequência imediata que $f_{score}$ nunca irá superestimar o verdadeiro custo de uma solução ao longo do caminho atual através de $n$.
-<br>
-$\quad$ Heurísticas admissíveis são otimistas por natureza porque imaginam que o custo de resolver o problema seja menor do que realmente é. Um exemplo óbvio é a heurística representada pela distância euclidiana. A distância em linha reta é admissível porque ela sempre será o caminho mais curto entre dois pontos quaisquer, então a reta não pode ser uma superestimativa.
-
-### **Heurística admissível**
-
-$\quad$ No nosso caso, estamos utilizando a distância de Haversine para representar a heurística $h_{score}$, isso faz ela ser admissível e realista, entregando resultados mais próximos aos da realidade. <br>
-
->$d_{Haversine} = 2r \arcsin(\sqrt{\sin^2(\frac{y_2 - y_1}{2}) + \cos(y_1) \cdot \cos(y_2) \cdot \sin^2(\frac{x_2 - x_1}{2})})$ 
-
-$\quad$ Apesar da menor distância entre dois pontos quaisquer ser sempre a euclidiana (linha reta), precisamos lembrar que vamos utilizar o projeto em áreas muito extensas, isso faz com que a curvatura da Terra seja um fator importante e que não possa ser relevado, por isso a distância euclidiana, por menos superestimativa que seja, continuaria sendo um problema, pois não entregaria resultados palpaveis, ao utilizá-la, inconsistencias como atravessar uma montanha como se ela não existisse seriam bem frequentes, visto que todo o relevo e a curvatura da Terra não estaria em questão. Devido isso, optamos pela fórmula de Haversine, que é a menor distância entre dois pontos que se encontram na superfície de uma esfera, passando pela superfície. <br>
-**Obs.:** Apesar da Terra também não ser uma esfera perfeita, utilizar essa forma para os cálculos trás aproximações muito mais precisas do que imaginar como se ela fosse plana.
-
-### **Heurística consistente**
-
->   O livro também diz:
->
-> A segunda condição, diz mais sobre a consistência e é utilizada apenas nos casos da utilização do A* em grafos. No caso, ela diz que para todo e qualquer $h_n$, seja isso o $h_{score}$ de um nó qualquer $n$, obrigatóriamente seu valor deve ser maior que o $h_{score}$ do seu sucessor $n+1$ somado com o peso para chegar até esse nó.
-><br>
-><br>
-> $h_{n} \geq h_{n+1} + \omega_{n, n+1}$
-
-Estamos trabalhando no projeto com um grafo conexo planar, em que todos os nós estão distribuidos uniformemente, de modo que é possível formar uma área retângular ou quadrática, já que cada nó se liga apenas ao da sua direita e ao de baixo e todos estão distribuidos a uma distância de 120 m entre si.
-
-O formato da malha seria semelhante ao seguinte exemplo:
-<img width="730" height="470" src="img_artigo\malha.png">
-
-Com o grafo definido, vamos supor alguns nós: um nó $n$ qualquer, os dois nós $n+1$, a qual são definidos por serem adjacentes ao nó $n$ e o ponto de destino, assim podemos demonstrar que a distância entre esse nó $n$ e o destino é sempre maior que a distância entre o nó $n+1$ e o destino.
-<img width="730" height="470" src="img_artigo/malha-n-n+1.png">
-
-Por melhor definição do problema, queremos demonstrar que indpendente de qual seja o nó $n$, sua distancia $D_n$ será sempre maior que a distancia $D_{n+1}$.
-
-> $\forall n \mid D_n > D_{n+1}$
-
-<img width="730" height="470" src="img_artigo\malha-distancias.png">
-
-### **Demonstração do problema**
-
-* Vamos primeiramente, definir 2 casos: um caso o algoritmo tome o nó $n+1$ como o de baixo e outro para se ele escolher o da direita. A partir disso vamos montar dois triângulos retângulos a fim de definir $D_n$ e $D_{n+1}$ como suas hipotenusas
-<img width="730" height="470" src="img_artigo\malha-triangulos.png">
-
-* Perceba que independente da alteração de tamanho entre as hipotenusas, o cateto adjacente definido por CA é sempre constante, não importa o caso. Utilizando isso, iremos utilizar das relações fundamentais da trigonometria com fins de provar a relação entre as hipotenusas.
-
-> Sabemos por meio da trignometria que:
->
-> $\cos \theta = \frac{CA}{D_{n+1}}$ 
-> <br>
-> 
-> $\cos( \theta + \alpha )= \frac{CA}{D_{n}}$
->
-* Analisando a função cosseno, conseguimos perceber uma característica importante para a demonstração
-<img width="730" height="470" src="img_artigo\funcao-cosseno.png">
-Perceba que para qualquer $x$ pertencte ao intervalo $(0, \pi)$, a medida que $x$ aumenta, o valor de $\cos x$ diminui e com isso é possível concluir que quanto maior for o ângulo formado entre a hipotenusa e o cateto adjacente de um triângulo retângulo, menor será o valor do cosseno desse ângulo, visto que em um triângulo qualquer, a soma dos ângulos internos é sempre 180° ou $\pi$ em radianos
-
-> **Demonstração de porque a soma dos ângulos internos de um triângulo é sempre 180°**
->
-> * Supondo um triângulo qualquer, vamos traçar uma reta que seja tangente ao vértice oposto da base desse triângulo e seja paralela à base (formando a reta $r$) e em seguida vamos prolongar a base (formando a reta $s$), tal que, $r//s$
-> <img width="730" height="470" src="img_artigo\demonstração angulos.png">
->
-> * Agora, vamos prolongar os demais lados do triângulo, de forma que teremos duas retas paralelas cortadas por duas transversais
-> <img width="730" height="470" src="img_artigo\demonstracao-triangulo-1.png">
-> * Como os ângulos $\hat{x}$ e $\hat{a}$ são alternos internos, podemos afirmar que $\hat{x} = \hat{a}$. Da mesma forma podemos afirmar a igualdade entre os ângulos $\hat{y}$ e $\hat{c}$. Portanto, conseguimos concluir o seguinte:
-> <img width="730" height="470" src="img_artigo\demonstracao-triangulo-2.png">
-> Fazendo com que $\hat{a} + \hat{b} + \hat{c} = 180°$
-
-Dito tudo isso, podemos confirmar que $\cos(\theta + \alpha)$, que corresponde ao cosseno do triangulo cuja hipotenusa é $D_n$ é **menor** que $\cos \theta$, que corresponde ao cosseno do triangulo cuja hipotenusa é $D_{n+1}$.
-
-Se voltarmos nas relações trigonométricas vistas anteriormente e lembrarmos que independente da variação do cosseno do ângulo e do tamanho das hipotenusas ($D_n$ e $D_{n+1}$) o valor de $CA$ é constante, é possível concluir que o valor do cosseno e o tamanho da hipotenusa são inversamente proporcionais, isto é, quanto menor for o valor do cosseno, maior será o valor da hipotenusa. Portanto, se $\cos(\theta + \alpha) < \cos \theta$, pode-se assim provar que $D_{n} > D_{n+1}$ e consequentemente levando $h_n > h_{n+1}$.
-
-$c.q.d$
+ <p> "A prova da 'corretude' de um algoritmo consiste em mostrar que ele executa
+ corretamente o processo desejado, isto é, que chega à solução procurada Existem
+ métodos de prova formal da corretude, empregando Lógica Matemática. Nessa área há
+ duas dasses de problemas: a prova da execução correta e a prova de que a execução
+ termina para quaisquer dados de entrada. Esta última questão é denominada o
+ problema da parada." (Setzer V.W. e Carvalheiro F.H. ALGORITMO E SUA ANÁLISE
+ (Uma Introdução Didática); Agosto 1993) </p>
+ ## **Explicando o algoritmo**
+ <p> O algoritmo A* (pronuncia-se "A estrela") tem a funcionalidade de realizar uma busca de menor custo, dado um grafo conexo, também chamado de malha. Dito isso, o algoritmo funcionaria da seguinte maneira: </p>
+ * **Primeiro passo:** Dito que o algoritmo tem o objetivo de tracejar uma rota entre dois pontos, faz-se trivial que a primeira coisa a ser feita seja o input de dois nós pelo usuário, um indicando o ponto de partida e um que indique o destino.
+ <br>
+ * **Segundo passo:** Dado os pontos de destino o algoritmo por meio de diferentes métodos de busca, localiza onde esses pontos se encontram em um determinado grafo, pode também ser chamada de malha, independentemente a função disso é como uma área de operações, é lá que o algoritmo vai começar a analisar o terreno que ele tem disponível a fim de encontrar uma rota que ligue os pontos de origem ao de destino.
+ <br>
+ * **Terceiro passo:** Com o conhecimento da malha e a localização dos pontos extremos da rota, o algoritmo comeca a fazer a sua análise. A procura de certa forma é simples, iniciando pelo nó de origem, o algoritmo analisa seus vizinhos e através da expressão $f_{score} = g_{score} + h_{score}$ ele cria uma lista e analisa sempre com prioridade os nós que possuem o menor $f_{score}$
+ > É importante ressaltar que dada a expressão $f_{score} = g_{score} + h_{score}$, cada variavel representa:
+ >
+ > * $g_{score} =$ O somatório de todos os pesos das arestas escolhidas partindo do nó de origem até o nó atual
+ > <br>
+ >
+ > * $h_{score} =$ Representa o custo estimado para chegar do no atual ate o no de destino
+ > <br>
+ >
+ > * $f_{score} =$ Uma estimativa do menor custo possível da rota completa indo da origem ao destino, passando pelo nó atual
+ * **Quarto passo:** Baseado na lista de prioridade criada, o algoritmo separa duas outras listas: umas de nós já visitados e outra de nós que ainda não foram visitados, o intúito dessa divisão é justamente impedir que o algoritmo fique dando voltas e passe por um mesmo nó mais de uma vez, visto que estamos buscando a rota de menor custo, é trivial que isso não ocorra.
+ * **Conclusão final:** Os passos 3 e 4 ocorrem de forma iterativa, isto é, para todo e qualquer nó $n$ a qual o procedimento é realizado, o mesmo procedimento ocorre para o nó $n+1$ enquanto $n+1 \neq$ destino. Assim que o algortimo chega ao destino, a rota está tracejada e o algoritmo retorna o caminho.
+ Mas nada basta toda essa explicacao se o algoritmo não for correto, com isso faremos a seguir a corretude do algoritmo
+ ## **Condições para otimalidade: admissibilidade e consistência**
+ Existem diversos algoritmos para encontrar caminhos minimos, mas cada um tem a sua caracteristica propria, no caso do A* temos a heuristica, podemos associar o caso com um simples exemplo: imagine que exista um rato que queira chegar ate um queijo, mas para isso, ele deve percorrer um longo trajeto em um labirinto; como ele nao sabe o caminho ele precisaria ir testando varias alternativas de caminho ate chegar onde deseja. Porem, imagine que o rato tem um otimo olfato e consegue perceber em todo e qualquer ponto do labirinto se o cheiro desse queijo esta se intensificando ou enfraquecendo, para nos, isso eh a heuristica. Assim como o cheiro ajuda o rato a encontrar caminhos mais certeiros e evitar passar desnecessariamente por caminhos que nao levam a lugar nenhum, a heuristica para o algoritmo de A* tem a mesma finalidade, mas para que ela seja valida eh necessario seguir dois pre-requisitos: que ela seja **admissivel** e **consistente** .
+ * **Heuristica admissivel**
+ $\qquad$ Para que uma heuristica possa ser considerada admissivel, ela nunca pode superestimar o valor real do custo do caminho entre um no $n$ qualquer ate o ponto de destino. Portanto podemos afirmar que para todo e qualquer no $n$ a expressao $h_n \leq g_n$ necessita ser verdadeira para que a heuristica seja admissivel.
+ <br>
+ No contexto dado ao projeto, o peso entre um no e seu sucessor eh definido pela expressao
+ <br>
+ > $\omega_{n, n+1} =\left | h_{n+1} - h_n \right | \cdot \alpha + d_{n, n+1} \cdot \beta$
+ >
+ > dado que:
+ >
+ > - **$h_x$** - representa a altura de um ponto $x$ qualquer
+ > - **$d_{x, x+1}$** - representa a distancia entre os nos $x$ e $x+1$
+ > - **$\alpha$** e **$\beta$** - constantes definidas pelo usuario que representam um peso para cada variavel, tal que $\alpha + \beta = 1$
+ >
+ Visto que a distancia eh um valor deterministico na definicao do peso, fazia-se necessario para a escolha da heuristica a forma mais viavel possivel que represente a menor forma de representar a distancia entre dois pontos, analisado pelo principio da admissibilidade a heuristica jamais pode ser superior ao peso entre dois nos. Dessa forma, escolhemos a distancia de haversine como heuristica, a escolha foi feita baseado no fato em que a distancia euclidiana nao seria viavel ja que ela nao considera a curvatura da Terra, gerando assim imprecisoes nos calculos caso tenha sido escolhida.
+ <br>
+ Portanto, podemos garantir a admissibilidade da heuristica, a partir do momento em que o peso eh a porcentagem da distancia real somado com a diferenca de altitudes dos pontos em questao e a heuristica seria unica e puramente a distancia em linha reta, passando sobre a superficie da Terra, admitindo assim que a heuristica nunca ira ser superior ao custo
+ * **Heuristica consistente**
+ $\qquad$ Quanto a consistencia de uma heurística, se faz necessario a explicabilidade sobre o valor da heuristica de um no qualquer ser menor ou igual ao valor da heuristica do no sucessor somado com o peso da aresta entre o no qualquer e seu sucessor
+ > $h_n \leq \omega_{n, n+1} + h_{n+1}$
+ >
+ Para que possamos demonstrar a veracidade dessa formula, vamos verificar primeiramente a relacao entre o $f_{score}$ de um no qualquer e de seu sucessor
+ > Queremos provar a relaçao entre $f_n$ e $f_{n+1}$, e como ja visto antes $f_{score} = g_{score} + h_{score}$ portanto temos 5 casos possiveis, porem apenas 1 sera valido:
+ >
+ > 1. $\quad f_n < f_{n+1} \rightarrow g_n + h_n < g_{n+1} + h_{n+1}$
+ > 2. $\quad f_n \leq f_{n+1} \rightarrow g_n + h_n \leq g_{n+1} + h_{n+1}$
+ > 3. $\quad f_n = f_{n+1} \rightarrow g_n + h_n = g_{n+1} + h_{n+1}$
+ > 4. $\quad f_n > f_{n+1} \rightarrow g_n + h_n > g_{n+1} + h_{n+1}$
+ > 5. $\quad f_n \geq f_{n+1} \rightarrow g_n + h_n \geq g_{n+1} + h_{n+1}$
+ >
+ > Como sabemos, o $g_{score}$ representa o somatorio de pesos das arestas escolhidas para o caminho, portanto podemos afirmar a relacao $g_{n+1} = g_n + \omega_{n, n+1}$ que diz respeito sobre o $g_{score}$ de um no ser igual ao $g_{score}$ do no predecessor somado ao peso da aresta que liga o no predecessor ao atual. Dito isso, eh possivel afirmar que $g_{n+1} > g_n$ visto que nao admitimos arestas de peso 0, ja que eh impossivel a coexistencia de dois pontos com mesmas latitudes e longitudes no grafo proposto
+ > <br>
+ > <br>
+ > Dada a afirmacao a respeito do $g_{score}$ conseguimos definir que dos 5 casos vistos anteriormente o unico que aceita a proposicao da heuristica admissivel eh $f_n \leq f_{n+1}$ visto que para todos os outros casos para que a relacao seja verdadeira, ou a heuristica $h_{score}$ deve ser superior ao custo $g_{score}$, o que eh um absurdo, ou seria o caso 1. que nao inclui o caso em que $h_n = h_{n+1}$
+ > <br>
+ > <br>
+ > Tendo a relacao entre o $f_{score}$ de um no e seu sucessor e tambem a relacao do $g_{score}$ de um no com seu sucessor, vamos juntar tudo em uma mesma formula:
+ > <br>
+ > <br>
+ > $f_n \leq f_{n+1}$
+ > <br>
+ > $g_n + h_n \leq g_{n+1} + h_{n+1}$
+ > <br>
+ > $g_n + h_n \leq g_n + \omega_{n, n+1} + h_{n+1}$
+ > <br>
+ > <br>
+ > Vejamos que o termo $g_n$ aparece dos 2 lados da desigualdade, por isso podemos retira-lo sem que haja alteracao e com isso concluimos a demonstracao da formula apresentada pelo principio que determina a consistencia de uma heuristica
+ > <br>
+ > <br>
+ > $h_n \leq \omega_{n, n+1} + h_{n+1}$
+ > <br>
+ > <br>
+ > $c. q. d.$
 
 # Resultados obtidos
 
