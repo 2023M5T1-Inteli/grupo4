@@ -85,61 +85,57 @@ function getData() {
         createMap(latLonArray)
  });
 
-};
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic29sZW1uIiwiYSI6ImNsZmlvbDBibjBrNTg0M25taG1xM2x2YXIifQ.aiMQpTd20YpCaWJfL5BmIg';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-45, -22],
+    zoom: 8
+});
 
 
+ map.on('load', function () {
 
-function createMap(coordinates){
+     var coordinates = latLonArray
+        new mapboxgl.Marker()
+            .setLngLat(coordinates[0])
+            .addTo(map);
+        new mapboxgl.Marker()
+            .setLngLat(coordinates[coordinates.length - 1])
+            .addTo(map);
+     
+     var geojson = {
+         type: 'FeatureCollection',
+         features: [{
+             type: 'Feature',
+             geometry: {
+                 type: 'LineString',
+                 coordinates: coordinates
+             }
+         }]
+     };
 
-        mapboxgl.accessToken = 'pk.eyJ1Ijoic29sZW1uIiwiYSI6ImNsZmlvbDBibjBrNTg0M25taG1xM2x2YXIifQ.aiMQpTd20YpCaWJfL5BmIg';
+     map.addSource('route', {
+         type: 'geojson',
+         data: geojson
+     });
 
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-45, -22],
-            zoom: 8
-        });
-
-        console.log(coordinates)
-        coordinates.forEach(function (coordinate) {
-            new mapboxgl.Marker()
-                .setLngLat(coordinate)
-                .addTo(map);
-        });
-        
-       
-        var geojson = {
-            type: 'FeatureCollection',
-            features: [{
-                type: 'Feature',
-                geometry: {
-                    type: 'LineString',
-                    coordinates: coordinates
-                }
-            }]
-        };
-   
-        map.addSource('route', {
-            type: 'geojson',
-            data: geojson
-        });
-   
-        map.addLayer({
-            id: 'route',
-            type: 'line',
-            source: 'route',
-            layout: {
-                'line-join': 'round',
-                'line-cap': 'round'
-            },
-            paint: {
-                'line-color': '#888',
-                'line-width': 8
-            }
-        });
-    
-}
-
+     map.addLayer({
+         id: 'route',
+         type: 'line',
+         source: 'route',
+         layout: {
+             'line-join': 'round',
+             'line-cap': 'round'
+         },
+         paint: {
+             'line-color': '#888',
+             'line-width': 8
+         }
+     });
+ });
 
 
  // Função para avançar para a próxima página

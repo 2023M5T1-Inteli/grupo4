@@ -29,9 +29,6 @@ public class DtedDatabaseHandler {
     public boolean InitializeFromResources(String pathInResources) {
         boolean retCode = false;
 
-        // Get version (for debug purposes only)
-        String s = gdal.VersionInfo();
-
         // Register GDAL
         gdal.AllRegister();
 
@@ -70,9 +67,6 @@ public class DtedDatabaseHandler {
 
     public boolean Initialize(String database_path) {
         boolean retCode = false;
-
-        // Get version (for debug purposes only)
-        String s = gdal.VersionInfo();
 
         // Register GDAL
         gdal.AllRegister();
@@ -170,10 +164,8 @@ public class DtedDatabaseHandler {
         double[] geoTransform = d.GetGeoTransform();
 
         double minLon = geoTransform[0];
-        double maxLon = minLon  + (xsize-1)*geoTransform[1];
 
         double maxLat = geoTransform[3];
-        double minLat = maxLat + (ysize-1)*geoTransform[5];
 
         Double queryOffsetXDouble = ((lon - minLon))*(xsize-1);
         Double queryOffsetYDouble = ((maxLat - lat))*(ysize-1);

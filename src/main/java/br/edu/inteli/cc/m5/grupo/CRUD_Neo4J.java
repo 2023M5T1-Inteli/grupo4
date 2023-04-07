@@ -5,8 +5,6 @@ import org.neo4j.driver.*;
 import org.neo4j.driver.types.Node;
 import org.neo4j.driver.types.Relationship;
 
-import java.util.Scanner;
-
 // Nesta classe, executamos as operações de CRUD no Neo4J, e como exemplo, criamos um nó com o nome "John", e depois imprimimos o nome do nó criado.
 public class CRUD_Neo4J {
     
